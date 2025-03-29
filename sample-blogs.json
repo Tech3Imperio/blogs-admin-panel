@@ -1,0 +1,479 @@
+{
+  "metadata": {
+      "title": "Why Aluminium Railings?",
+      "description": "Know about how and why Aluminium Railings beat every other railing material out there!!",
+      "image": {
+          "src": "https://res.cloudinary.com/dwujy2ixt/image/upload/v1742289692/home-2.jpg",
+          "alt": "why-aluminium-railings"
+      },
+      "blogSlug": "why-aluminium-railings"
+  },
+  "sections": [
+      {
+          "name": "Section 1",
+          "subSections": [
+              {
+                  "name": "Heading",
+                  "heading": {
+                      "ops": [
+                          {
+                              "attributes": {
+                                  "color": "#888888"
+                              },
+                              "insert": "Need For"
+                          },
+                          {
+                              "attributes": {
+                                  "color": "#bbbbbb"
+                              },
+                              "insert": " "
+                          },
+                          {
+                              "insert": "Railings"
+                          },
+                          {
+                              "attributes": {
+                                  "header": 1
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "headingId": "need-for-railings"
+              },
+              {
+                  "name": "Body",
+                  "body": {
+                      "ops": [
+                          {
+                              "insert": "Railings are essential for "
+                          },
+                          {
+                              "attributes": {
+                                  "italic": true,
+                                  "bold": true
+                              },
+                              "insert": "safety"
+                          },
+                          {
+                              "insert": ", providing fall protection on balconies, staircases, and elevated areas. They offer structural support, helping individuals maintain balance, especially in high-traffic spaces. Beyond safety, railings enhance aesthetics, with various materials and designs complementing architectural styles. They also serve as space dividers and provide privacy, particularly with frosted or tinted glass options. Additionally, they offer "
+                          },
+                          {
+                              "attributes": {
+                                  "italic": true,
+                                  "bold": true
+                              },
+                              "insert": "weather resistance"
+                          },
+                          {
+                              "insert": ", protecting against environmental factors like wind and rain, making them a crucial element in both residential and commercial spaces."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "hasImages": false,
+                  "bodyImages": null
+              },
+              {
+                  "name": "Body",
+                  "body": {
+                      "ops": [
+                          {
+                              "insert": "Beyond safety, railings contribute to "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "aesthetics and design"
+                          },
+                          {
+                              "insert": ", enhancing the look of a space with modern, minimalist, or traditional styles. Materials like glass, aluminum, stainless steel, and wood offer versatility in design while complementing architectural elements.\n"
+                          }
+                      ]
+                  },
+                  "hasImages": false,
+                  "bodyImages": null
+              }
+          ]
+      },
+      {
+          "name": "New Section",
+          "subSections": [
+              {
+                  "name": "Heading",
+                  "heading": {
+                      "ops": [
+                          {
+                              "attributes": {
+                                  "color": "#888888"
+                              },
+                              "insert": "Importance of "
+                          },
+                          {
+                              "insert": "Material"
+                          },
+                          {
+                              "attributes": {
+                                  "header": 1
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "headingId": "importance-of-material"
+              },
+              {
+                  "name": "Body",
+                  "body": {
+                      "ops": [
+                          {
+                              "insert": "The material used in railings is crucial as it determines durability, aesthetics, maintenance, cost, and functionality. Strong materials like stainless steel and aluminum offer longevity and corrosion resistance, while wood provides a natural look but requires more upkeep. Glass railings enhance modern aesthetics and openness, whereas wrought iron adds a classic touch. The right material ensures structural integrity, complements design preferences, withstands environmental conditions, and aligns with budget considerations, making it a key factor in railing selection."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n\n"
+                          },
+                          {
+                              "insert": "Material choice also affects safety, as sturdy options like steel and tempered glass provide strong support and impact resistance. Maintenance requirements vary; metals like aluminum need minimal upkeep, while wood may require frequent treatments. "
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "hasImages": true,
+                  "bodyImages": {
+                      "name": "ImageCarousel",
+                      "images": [
+                          {
+                              "src": "https://res.cloudinary.com/dwujy2ixt/image/upload/v1742289939/home-1.png",
+                              "altText": "importance-of-material"
+                          },
+                          {
+                              "src": "https://res.cloudinary.com/dwujy2ixt/image/upload/v1742289692/home-2.jpg",
+                              "altText": "importance-of-material-2"
+                          }
+                      ],
+                      "position": "LEFT"
+                  }
+              },
+              {
+                  "name": "Body",
+                  "body": {
+                      "ops": [
+                          {
+                              "insert": "The weight of the material also plays a role, with lighter options like aluminum being easier to install, while heavier materials like iron offer added robustness. Weather resistance is another key factor, as some materials, like stainless steel and powder-coated aluminum, withstand harsh conditions better than others. Customization possibilities vary, with glass and metal allowing sleek, modern designs, while wood provides a warm, rustic appeal. Cost-effectiveness is important, as high-end materials like stainless steel or frameless glass may be pricier but offer long-term benefits. Ultimately, the right material ensures a perfect balance of safety, style, maintenance, and longevity for any railing system."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "hasImages": false,
+                  "bodyImages": null
+              },
+              {
+                  "name": "Body",
+                  "body": {
+                      "ops": [
+                          {
+                              "insert": "Different types of railing materials include "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "stainless steel, aluminum, glass, wood, wrought iron, and composite materials"
+                          },
+                          {
+                              "insert": ". Stainless steel and aluminum are known for their durability and corrosion resistance, while glass railings offer a modern, open look. Wood provides a classic aesthetic but requires regular maintenance, and wrought iron adds an ornate, traditional appeal."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n\n"
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "Stainless Steel: "
+                          },
+                          {
+                              "insert": "Highly durable, corrosion-resistant, and ideal for both indoor and outdoor applications. Low maintenance with excellent strength, making it suitable for high-traffic areas."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify",
+                                  "list": "bullet"
+                              },
+                              "insert": "\n"
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n"
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "Aluminum: "
+                          },
+                          {
+                              "insert": "Lightweight, rust-proof, and cost-effective, making it easy to install and maintain. Available in various finishes and colors, offering flexibility in design."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify",
+                                  "list": "bullet"
+                              },
+                              "insert": "\n"
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n"
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "Glass: "
+                          },
+                          {
+                              "insert": "Provides a sleek, modern, and unobstructed view, enhancing aesthetics. Uses tempered or laminated glass for safety and durability."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify",
+                                  "list": "bullet"
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "hasImages": false,
+                  "bodyImages": null
+              },
+              {
+                  "name": "Body",
+                  "body": {
+                      "ops": [
+                          {
+                              "insert": "Other railing materials include "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "wrought iron, composite, and PVC"
+                          },
+                          {
+                              "insert": ". Wrought iron is strong and decorative, often used for classic or ornamental designs. Composite and PVC railings are low-maintenance alternatives, offering durability and resistance to weather and pests, making them ideal for long-term use."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "hasImages": false,
+                  "bodyImages": null
+              },
+              {
+                  "name": "ImageCarousel",
+                  "images": [
+                      {
+                          "src": "https://res.cloudinary.com/dwujy2ixt/image/upload/v1742291388/home-3.jpg",
+                          "altText": "types-of-materials"
+                      }
+                  ],
+                  "position": "NONE"
+              }
+          ]
+      },
+      {
+          "name": "New Section",
+          "subSections": [
+              {
+                  "name": "Heading",
+                  "heading": {
+                      "ops": [
+                          {
+                              "attributes": {
+                                  "color": "#888888"
+                              },
+                              "insert": "Why Aluminium is "
+                          },
+                          {
+                              "insert": "Best"
+                          },
+                          {
+                              "attributes": {
+                                  "header": 1
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "headingId": "why-aluminium-is-best"
+              },
+              {
+                  "name": "Body",
+                  "body": {
+                      "ops": [
+                          {
+                              "insert": "Aluminum is the best railing material due to its "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "lightweight yet high strength"
+                          },
+                          {
+                              "insert": ", making it easy to install without compromising durability. It is "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "corrosion-resistant"
+                          },
+                          {
+                              "insert": ", even in coastal and humid environments, requiring minimal maintenance. With "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "various finishes and colors"
+                          },
+                          {
+                              "insert": ", it offers design flexibility to match modern and traditional aesthetics. Aluminum is also "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "cost-effective"
+                          },
+                          {
+                              "insert": " compared to stainless steel and glass, providing long-term value. Additionally, it is "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "eco-friendly and recyclable"
+                          },
+                          {
+                              "insert": ", making it a sustainable choice for railing systems."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "hasImages": false,
+                  "bodyImages": null
+              },
+              {
+                  "name": "Body",
+                  "body": {
+                      "ops": [
+                          {
+                              "insert": "Aluminum railings are "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "weather-resistant"
+                          },
+                          {
+                              "insert": ", withstanding rain, sun, and temperature changes without warping or rusting. They require "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "no painting or sealing"
+                          },
+                          {
+                              "insert": ", reducing long-term upkeep and maintenance costs. The material is "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "highly customizable"
+                          },
+                          {
+                              "insert": ", allowing for different shapes, patterns, and powder-coated finishes. Aluminum is "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "impact-resistant"
+                          },
+                          {
+                              "insert": ", ensuring safety in high-traffic areas like balconies and staircases. Its "
+                          },
+                          {
+                              "attributes": {
+                                  "bold": true
+                              },
+                              "insert": "long lifespan and durability"
+                          },
+                          {
+                              "insert": " make it a reliable investment for both residential and commercial spaces."
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n\n"
+                          },
+                          {
+                              "insert": "Thank You"
+                          },
+                          {
+                              "attributes": {
+                                  "align": "justify"
+                              },
+                              "insert": "\n"
+                          }
+                      ]
+                  },
+                  "hasImages": false,
+                  "bodyImages": null
+              }
+          ]
+      }
+  ]
+}

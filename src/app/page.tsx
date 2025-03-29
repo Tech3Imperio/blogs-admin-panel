@@ -1,11 +1,32 @@
-import { ModeToggle } from "@/components/mode-toggle";
-import { Textarea } from "@/components/ui/textarea";
+import type { Metadata } from "next";
+import { authPageImage } from "@/assets/LoginPage";
+import Image from "next/image";
+import { blackLogo } from "@/assets/Logo";
+import AuthForm from "@/components/AuthForm/AuthForm";
+import dbConnect from "@/lib/dbConnect";
+// import { Card } from "@/components/ui/card";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Blogs Admin Panel",
+  description: "CRUD actions Admin Panel for blogs",
+};
+
+export default async function Home() {
+  await dbConnect();
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <ModeToggle />
-      <Textarea />
+    <div
+      className="flex flex-row justify-center w-[100vw] h-[100vh] mx-auto my-auto items-center gap-8 font-[family-name:var(--font-geist-sans)]"
+      style={{
+        backgroundImage: `url(${authPageImage.src})`,
+        backgroundSize: "cover",
+      }}
+    >
+      {/* <Card className="flex w-[33%] h-[50%] flex-col justify-center items-center gap-4 rounded-2xl shadow-2xl backdrop-blur-md "> */}
+      <div className="flex w-[33%] h-[50%] flex-col justify-center items-center gap-4 rounded-2xl shadow-2xl backdrop-blur-md">
+        <Image src={blackLogo} alt="logo" className="w-48 aspect-auto" />
+        <AuthForm />
+      </div>
+      {/* </Card> */}
     </div>
   );
 }

@@ -33,6 +33,14 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -59,6 +67,14 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -69,4 +85,146 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.ql-toolbar {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ql-container {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.no-padding-quill {
+  width: 100%;
+}
+
+.no-padding-quill .ql-editor {
+  padding: 0 !important;
+  width: 100%;
+  height: max-content;
+}
+
+.heading-quill * {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.body-quill p {
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.no-padding-quill a {
+  color: blue;
+  text-decoration: none !important;
+}
+
+*::placeholder {
+  font-style: italic;
+}
+
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.din-thin {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.din-extralight {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.din-light {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.din-regular {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.din-medium {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.din-semibold {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.din-bold {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.din-extrabold {
+  font-family: "Din Regular", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.roboto-semibold {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+@font-face {
+  font-family: "DIN Regular";
+  src: url("./fonts/din-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("./fonts/Roboto-VariableFont_wdth\,wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
