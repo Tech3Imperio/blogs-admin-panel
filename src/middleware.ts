@@ -70,13 +70,11 @@ export default async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
   }
 
-  // 4. Handle CORS
+  // 4. Handle CORS properly
   const res = NextResponse.next();
+  const allowedOrigin = "https://blogs-admin-panel-ten.vercel.app"; // Your frontend domain
 
-  res.headers.set(
-    "Access-Control-Allow-Origin",
-    "https://blogs-admin-panel-ten.vercel.app/"
-  ); // Change "*" to frontend domain in production
+  res.headers.set("Access-Control-Allow-Origin", allowedOrigin);
   res.headers.set(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, OPTIONS"
@@ -85,10 +83,11 @@ export default async function middleware(req: NextRequest) {
     "Access-Control-Allow-Headers",
     "Content-Type, Authorization"
   );
+  res.headers.set("Access-Control-Allow-Credentials", "true"); // Allow cookies and sessions
 
-  // 5. Respond to OPTIONS preflight requests
+  // 5. Properly handle preflight requests (OPTIONS)
   if (req.method === "OPTIONS") {
-    return new NextResponse(null, { status: 200, headers: res.headers });
+    return new NextResponse(null, { status: 204, headers: res.headers });
   }
 
   return res;
