@@ -41,7 +41,7 @@ export async function signin(formData: AuthFormData) {
   }
   const emailId = formData.email;
   const user = await User.findOne({ email: emailId });
-  console.log("User is", user);
+
   if (!user) {
     console.log("User not found");
     return { success: false, message: "User not found" };
