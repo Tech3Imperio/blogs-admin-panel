@@ -23,7 +23,7 @@ async function dbConnect() {
   }
 
   if (cached.conn) {
-    return cached.conn;
+    return true;
   }
   if (!cached.promise) {
     const opts = {
@@ -41,7 +41,7 @@ async function dbConnect() {
     throw e;
   }
 
-  return cached.conn;
+  return true;
 }
 
 export default dbConnect;
