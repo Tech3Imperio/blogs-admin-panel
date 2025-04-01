@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { authPageImage } from "@/assets/LoginPage";
 import Image from "next/image";
