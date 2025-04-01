@@ -7,7 +7,6 @@ const protectedRoutes = ["/dashboard"];
 const publicRoutes = ["/"];
 
 export default async function middleware(req: NextRequest) {
-  console.log("In middleware");
   const allowedOrigins = [
     "https://blogs-admin-panel-ten.vercel.app",
     "http://localhost:3000",
@@ -56,5 +55,5 @@ export default async function middleware(req: NextRequest) {
 
 // Routes Middleware should not run on
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)", "/"],
+  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
 };

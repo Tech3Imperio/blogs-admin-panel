@@ -1,14 +1,12 @@
-import type { Metadata } from "next";
+"use server";
+
 import { authPageImage } from "@/assets/LoginPage";
 import Image from "next/image";
 import { blackLogo } from "@/assets/Logo";
 import AuthForm from "@/components/AuthForm/AuthForm";
-// import { Card } from "@/components/ui/card";
-
-export const metadata: Metadata = {
-  title: "Blogs Admin Panel",
-  description: "CRUD actions Admin Panel for blogs",
-};
+import dbConnect from "@/lib/dbConnect";
+await dbConnect();
+console.log("Attempted connect");
 export default async function Home() {
   return (
     <div
