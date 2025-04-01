@@ -57,8 +57,8 @@ export async function signin(formData: AuthFormData) {
   console.log("User authenticated successfully", user);
 
   await createSession(user.id);
-  redirect("/dashboard/all-blogs");
-  // return { success: true, message: "Login successful", user: user };
+  // redirect("/dashboard/all-blogs");
+  return { success: true, message: "Login successful", user: user };
 }
 
 export async function signup(formData: AuthFormData) {

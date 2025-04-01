@@ -40,7 +40,8 @@ async function onSignUp(values: z.infer<typeof AuthFormSchema>) {
 
 async function onSignIn(values: z.infer<typeof AuthFormSchema>) {
   console.log("Clicked on signin", values);
-  await signin(values);
+  const result = await signin(values);
+  console.log("Result is", result);
 }
 
 export default function AuthForm() {
