@@ -39,9 +39,13 @@ async function onSignUp(values: z.infer<typeof AuthFormSchema>) {
 }
 
 async function onSignIn(values: z.infer<typeof AuthFormSchema>) {
-  console.log("Clicked on signin", values);
-  const result = await signin(values);
-  console.log("Result is", result);
+  console.log("Before calling signin", values);
+  try {
+    const result = await signin(values);
+    console.log("After calling signin", result);
+  } catch (error) {
+    console.error("Error calling signin", error);
+  }
 }
 
 export default function AuthForm() {
