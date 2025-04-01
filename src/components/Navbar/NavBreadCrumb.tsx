@@ -48,7 +48,9 @@ const NavBreadCrumb = () => {
           <React.Fragment key={index}>
             {index !== 0 && <BreadcrumbSeparator />}
             <BreadcrumbItem>
-              <BreadcrumbLink href={`http://localhost:3000/${links[index]}`}>
+              <BreadcrumbLink
+                href={`https://blogs-admin-panel-ten.vercel.app/${links[index]}`}
+              >
                 {breadCrumb}
               </BreadcrumbLink>
             </BreadcrumbItem>
