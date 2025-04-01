@@ -7,7 +7,7 @@ const protectedRoutes = ["/dashboard"];
 const publicRoutes = ["/"];
 
 export default async function middleware(req: NextRequest) {
-  const allowedOrigins = ["https://https://blogs-admin-panel-ten.vercel.app"];
+  const allowedOrigins = ["https://blogs-admin-panel-ten.vercel.app"];
 
   const origin = req.headers.get("origin");
 
