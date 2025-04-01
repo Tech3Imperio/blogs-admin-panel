@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "../components/theme-provider";
 import { useEffect, useState } from "react";
+import dbConnect from "@/lib/dbConnect";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,6 +24,10 @@ export default function RootLayout({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const getConnection = async () => {
+      await dbConnect();
+    };
+    getConnection();
     setMounted(true); // Set to true when the component is mounted on the client side
   }, []);
 

@@ -4,9 +4,6 @@ import { authPageImage } from "@/assets/LoginPage";
 import Image from "next/image";
 import { blackLogo } from "@/assets/Logo";
 import AuthForm from "@/components/AuthForm/AuthForm";
-import dbConnect from "@/lib/dbConnect";
-await dbConnect();
-console.log("Attempted connect");
 export default async function Home() {
   return (
     <div
