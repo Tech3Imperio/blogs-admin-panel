@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import type { Metadata } from "next";
 import { authPageImage } from "@/assets/LoginPage";
 import Image from "next/image";
@@ -10,9 +12,9 @@ export const metadata: Metadata = {
   title: "Blogs Admin Panel",
   description: "CRUD actions Admin Panel for blogs",
 };
-await dbConnect();
-console.log("Attempted connect");
+
 export default async function Home() {
+  await dbConnect();
   return (
     <div
       className="flex flex-row justify-center w-[100vw] h-[100vh] mx-auto my-auto items-center gap-8 font-[family-name:var(--font-geist-sans)]"
