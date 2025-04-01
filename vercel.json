@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/**/*.js": { "runtime": "nodejs" },
+    "app/**/*.js": { "runtime": "nodejs" }
+  },
+  "middleware": { "runtime": "nodejs" }
+}
