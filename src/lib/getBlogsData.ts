@@ -2,7 +2,9 @@
 import SelectiveSystemsBlog from "@/models/blogs/Blog";
 export async function getAllBlogs() {
   try {
+    console.log("Inside getALlBlogs Try");
     const blogsData = await SelectiveSystemsBlog.find().lean();
+    console.log("BlogsData in getAllBlogs", blogsData);
     return JSON.parse(JSON.stringify(blogsData));
   } catch (error) {
     console.log("Error connecting to MongoDB here", error);

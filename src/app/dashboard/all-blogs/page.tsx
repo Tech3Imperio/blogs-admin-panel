@@ -23,7 +23,9 @@ const AllBlogs = () => {
   useLayoutEffect(() => {
     async function fetchBlogs() {
       try {
+        console.log("Inside Try");
         const blogsData: BlogType[] = await getAllBlogs();
+        console.log("BlogsData", blogsData);
         localStorage.setItem("blogs", JSON.stringify(blogsData));
         setBlogs(() => JSON.parse(localStorage.getItem("blogs") || "[]"));
       } catch (error) {

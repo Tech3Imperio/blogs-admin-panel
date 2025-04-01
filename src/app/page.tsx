@@ -12,9 +12,8 @@ export const metadata: Metadata = {
   title: "Blogs Admin Panel",
   description: "CRUD actions Admin Panel for blogs",
 };
-
+await dbConnect();
 export default async function Home() {
-  await dbConnect();
   return (
     <div
       className="flex flex-row justify-center w-[100vw] h-[100vh] mx-auto my-auto items-center gap-8 font-[family-name:var(--font-geist-sans)]"
