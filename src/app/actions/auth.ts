@@ -37,6 +37,7 @@ export async function signin(formData: AuthFormData) {
     console.log({
       errors: validatedFields.error.flatten().fieldErrors,
     });
+    return { success: false, message: "Validation failed" }; // Add this return
   } else {
     console.log("From server for Signin", formData);
   }
