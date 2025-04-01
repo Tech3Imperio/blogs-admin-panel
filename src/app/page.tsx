@@ -3,15 +3,12 @@ import { authPageImage } from "@/assets/LoginPage";
 import Image from "next/image";
 import { blackLogo } from "@/assets/Logo";
 import AuthForm from "@/components/AuthForm/AuthForm";
-import dbConnect from "@/lib/dbConnect";
 // import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Blogs Admin Panel",
   description: "CRUD actions Admin Panel for blogs",
 };
-const status = await dbConnect();
-console.log("Attempted connect");
 export default async function Home() {
   return (
     <div
@@ -21,7 +18,6 @@ export default async function Home() {
         backgroundSize: "cover",
       }}
     >
-      {status ? <>alert()</> : <></>}
       {/* <Card className="flex w-[33%] h-[50%] flex-col justify-center items-center gap-4 rounded-2xl shadow-2xl backdrop-blur-md "> */}
       <div className="flex w-[33%] h-[50%] flex-col justify-center items-center gap-4 rounded-2xl shadow-2xl backdrop-blur-md">
         <Image src={blackLogo} alt="logo" className="w-48 aspect-auto" />
