@@ -1,6 +1,6 @@
 "use server";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 import { authPageImage } from "@/assets/LoginPage";
 import Image from "next/image";
