@@ -1,3 +1,5 @@
+"use server";
+
 /* eslint-disable no-var */
 
 import mongoose from "mongoose";
