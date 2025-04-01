@@ -7,24 +7,6 @@ const protectedRoutes = ["/dashboard"];
 const publicRoutes = ["/"];
 
 export default async function middleware(req: NextRequest) {
-  console.log("In middleware");
-  const allowedOrigins = [
-    "https://blogs-admin-panel-ten.vercel.app",
-    "http://localhost:3000",
-  ];
-
-  const origin = req.headers.get("origin");
-
-  if (origin && allowedOrigins.includes(origin)) {
-    return new Response(null, {
-      status: 200,
-      headers: {
-        "Access-Control-Allow-Origin": origin, // Ensure the origin is always a string
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      },
-    });
-  }
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname;
   const isProtectedRoute = protectedRoutes.includes(path);
