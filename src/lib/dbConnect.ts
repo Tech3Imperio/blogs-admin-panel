@@ -1,3 +1,5 @@
+"use server";
+
 /* eslint-disable no-var */
 
 import mongoose from "mongoose";
@@ -23,7 +25,7 @@ async function dbConnect() {
   }
 
   if (cached.conn) {
-    return true;
+    return cached.conn;
   }
   if (!cached.promise) {
     const opts = {
@@ -41,7 +43,7 @@ async function dbConnect() {
     throw e;
   }
 
-  return true;
+  return cached.conn;
 }
 
 export default dbConnect;
