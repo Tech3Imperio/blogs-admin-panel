@@ -28,6 +28,7 @@ type AuthFormData = {
 };
 
 export async function signin(formData: AuthFormData) {
+  console.log("in singin");
   const validatedFields = AuthFormSchema.safeParse({
     email: formData.email,
     password: formData.password,
