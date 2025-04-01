@@ -28,7 +28,6 @@ type AuthFormData = {
 };
 
 export async function signin(formData: AuthFormData) {
-  console.log("in singin");
   const validatedFields = AuthFormSchema.safeParse({
     email: formData.email,
     password: formData.password,
@@ -37,7 +36,6 @@ export async function signin(formData: AuthFormData) {
     console.log({
       errors: validatedFields.error.flatten().fieldErrors,
     });
-    return { success: false, message: "Validation failed" }; // Add this return
   } else {
     console.log("From server for Signin", formData);
   }
@@ -58,8 +56,8 @@ export async function signin(formData: AuthFormData) {
   console.log("User authenticated successfully", user);
 
   await createSession(user.id);
-  // redirect("/dashboard/all-blogs");
-  return { success: true, message: "Login successful", user: user };
+  redirect("/dashboard/all-blogs");
+  // return { success: true, message: "Login successful", user: user };
 }
 
 export async function signup(formData: AuthFormData) {

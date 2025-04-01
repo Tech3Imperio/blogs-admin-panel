@@ -34,20 +34,6 @@ const AuthFormSchema = z.object({
     .max(20, { message: "Password must not be more that 20 characters" }),
 });
 
-async function onSignUp(values: z.infer<typeof AuthFormSchema>) {
-  await signup(values);
-}
-
-async function onSignIn(values: z.infer<typeof AuthFormSchema>) {
-  console.log("Before calling signin", values);
-  try {
-    const result = await signin(values);
-    console.log("After calling signin", result);
-  } catch (error) {
-    console.error("Error calling signin", error);
-  }
-}
-
 export default function AuthForm() {
   const [isSignInActive, setIsSignInActive] = useState(true);
 
@@ -59,6 +45,14 @@ export default function AuthForm() {
       password: "",
     },
   });
+
+  async function onSignUp(values: z.infer<typeof AuthFormSchema>) {
+    await signup(values);
+  }
+
+  async function onSignIn(values: z.infer<typeof AuthFormSchema>) {
+    await signin(values);
+  }
 
   return (
     <Form {...form}>

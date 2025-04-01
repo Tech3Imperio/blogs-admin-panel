@@ -1,5 +1,3 @@
-"use server";
-
 /* eslint-disable no-var */
 
 import mongoose from "mongoose";
@@ -16,7 +14,6 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  console.log("in db connect");
   const MONGODB_URI = process.env.MONGODB_URI!;
 
   if (!MONGODB_URI) {
@@ -26,7 +23,7 @@ async function dbConnect() {
   }
 
   if (cached.conn) {
-    return "Success";
+    return cached.conn;
   }
   if (!cached.promise) {
     const opts = {
@@ -44,7 +41,7 @@ async function dbConnect() {
     throw e;
   }
 
-  return "Success";
+  return cached.conn;
 }
 
 export default dbConnect;
