@@ -1,16 +1,14 @@
-export const config = {
-  runtime: "nodejs",
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
-};
 import { NextRequest, NextResponse } from "next/server";
 import { decrypt } from "./lib/session";
 import { cookies } from "next/headers";
+import dbConnect from "./lib/dbConnect";
 
 // 1. Specify protected and public routes
 const protectedRoutes = ["/dashboard"];
 const publicRoutes = ["/"];
 
 export default async function middleware(req: NextRequest) {
+  await dbConnect();
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname;
   const isProtectedRoute = protectedRoutes.includes(path);
@@ -41,3 +39,7 @@ export default async function middleware(req: NextRequest) {
 }
 
 // Routes Middleware should not run on
+export const config = {
+  runtime: "nodejs",
+  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+};

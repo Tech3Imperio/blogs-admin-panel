@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogPreview from "@/components/NewBlog/BlogPreview";
 import SectionsDataFields from "@/components/NewBlog/SectionsDataFields";
 import SectionsNavBar from "@/components/NewBlog/SectionsNavBar";
@@ -15,7 +15,7 @@ const Blog = () => {
   const blogs: BlogType[] = JSON.parse(localStorage.getItem("blogs") || "[]");
   const [loaded, setLoaded] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     console.log("Params:", params);
     console.log("Blog Slug:", blogSlug);
 
@@ -49,7 +49,7 @@ const Blog = () => {
     }
   }, [blogs, blogSlug, params]);
 
-  if (!loaded) return <p>Loading...</p>; // Prevent rendering empty state
+  if (!loaded) return <p>Loading...</p>;
 
   return (
     <div className="flex flex-row justify-stretch h-[100%]">

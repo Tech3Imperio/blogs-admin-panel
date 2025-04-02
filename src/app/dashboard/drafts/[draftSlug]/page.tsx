@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogPreview from "@/components/NewBlog/BlogPreview";
 import SectionsDataFields from "@/components/NewBlog/SectionsDataFields";
 import SectionsNavBar from "@/components/NewBlog/SectionsNavBar";
@@ -14,7 +14,7 @@ const Draft = () => {
   const draftSlug = params?.draftSlug;
   const blogs: BlogType[] = JSON.parse(localStorage.getItem("blogs") || "[]");
   const [loaded, setLoaded] = useState(false);
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!draftSlug || !blogs) return; // Avoid running the effect if blogSlug is undefined
 
     const draft = blogs.find((blog) => blog.metadata.blogSlug === draftSlug);
