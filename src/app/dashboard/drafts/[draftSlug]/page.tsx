@@ -35,6 +35,7 @@ const Draft = () => {
       }
       newBlog.metadata = draft.metadata;
       newBlog.sections = draft.sections;
+      newBlog.isDraft = draft.isDraft;
       activeSection.name = "Metadata";
       activeSection.index = -1;
       setLoaded(true); // Force re-render
