@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import BlogPreview from "@/components/NewBlog/BlogPreview";
 import SectionsDataFields from "@/components/NewBlog/SectionsDataFields";
 import SectionsNavBar from "@/components/NewBlog/SectionsNavBar";
 import { useParams } from "next/navigation";
 import { newBlog } from "@/state/proxies/newBlog";
-import { useEffect } from "react";
 import { BlogType } from "@/models/blogs/Blog";
 import { Delta } from "quill";
 import { activeSection } from "@/state/proxies/activeSection";
@@ -16,7 +15,7 @@ const Blog = () => {
   const blogs: BlogType[] = JSON.parse(localStorage.getItem("blogs") || "[]");
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     console.log("Params:", params);
     console.log("Blog Slug:", blogSlug);
 

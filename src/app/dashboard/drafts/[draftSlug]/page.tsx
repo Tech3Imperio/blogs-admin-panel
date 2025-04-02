@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import BlogPreview from "@/components/NewBlog/BlogPreview";
 import SectionsDataFields from "@/components/NewBlog/SectionsDataFields";
 import SectionsNavBar from "@/components/NewBlog/SectionsNavBar";
 import { useParams } from "next/navigation";
 import { newBlog } from "@/state/proxies/newBlog";
-import { useEffect } from "react";
 import { BlogType } from "@/models/blogs/Blog";
 import { Delta } from "quill";
 import { activeSection } from "@/state/proxies/activeSection";
@@ -15,7 +14,7 @@ const Draft = () => {
   const draftSlug = params?.draftSlug;
   const blogs: BlogType[] = JSON.parse(localStorage.getItem("blogs") || "[]");
   const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!draftSlug || !blogs) return; // Avoid running the effect if blogSlug is undefined
 
     const draft = blogs.find((blog) => blog.metadata.blogSlug === draftSlug);
