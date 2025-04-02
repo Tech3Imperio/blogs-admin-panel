@@ -1,9 +1,11 @@
 "use server";
 
+import dbConnect from "@/lib/dbConnect";
 import { getAllBlogs } from "@/lib/getBlogsData";
 import { BlogType } from "@/models/blogs/Blog";
 import SelectiveSystemsBlog from "@/models/blogs/Blog";
 export const submitBlog = async (blog: BlogType) => {
+  await dbConnect();
   try {
     const existingBlog = await SelectiveSystemsBlog.findOne({
       "metadata.blogSlug": blog.metadata.blogSlug,

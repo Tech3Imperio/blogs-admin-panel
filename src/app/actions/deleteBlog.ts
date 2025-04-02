@@ -1,9 +1,11 @@
 "use server";
 
+import dbConnect from "@/lib/dbConnect";
 import SelectiveSystemsBlog from "@/models/blogs/Blog";
 
 export const deleteBlog = async (blogSlug: string) => {
   try {
+    await dbConnect();
     console.log("Deleting Blog", blogSlug);
     const deletedBlog = await SelectiveSystemsBlog.findOneAndDelete({
       "metadata.blogSlug": blogSlug,

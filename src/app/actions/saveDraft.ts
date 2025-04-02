@@ -1,9 +1,11 @@
 "use server";
 
+import dbConnect from "@/lib/dbConnect";
 import { getAllBlogs } from "@/lib/getBlogsData";
 import { BlogType } from "@/models/blogs/Blog";
 import SelectiveSystemsBlog from "@/models/blogs/Blog";
 export const saveDraft = async (draft: BlogType) => {
+  await dbConnect();
   try {
     const existingDraft = await SelectiveSystemsBlog.findOne({
       "metadata.blogSlug": draft.metadata.blogSlug,

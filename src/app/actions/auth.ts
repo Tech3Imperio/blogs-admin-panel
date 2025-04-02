@@ -6,6 +6,7 @@ const allowedDomains = ["@selectivesystems.in"];
 import bcrypt from "bcryptjs";
 import { createSession, deleteSession } from "./../../lib/session";
 import { redirect } from "next/navigation";
+import dbConnect from "@/lib/dbConnect";
 
 const AuthFormSchema = z.object({
   email: z
@@ -28,6 +29,7 @@ type AuthFormData = {
 };
 
 export async function signin(formData: AuthFormData) {
+  await dbConnect();
   const validatedFields = AuthFormSchema.safeParse({
     email: formData.email,
     password: formData.password,
@@ -61,6 +63,7 @@ export async function signin(formData: AuthFormData) {
 }
 
 export async function signup(formData: AuthFormData) {
+  await dbConnect();
   const validatedFields = AuthFormSchema.safeParse({
     email: formData.email,
     password: formData.password,

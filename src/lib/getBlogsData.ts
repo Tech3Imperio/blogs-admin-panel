@@ -1,7 +1,9 @@
 "use server";
 import SelectiveSystemsBlog from "@/models/blogs/Blog";
+import dbConnect from "./dbConnect";
 export async function getAllBlogs() {
   try {
+    await dbConnect();
     console.log("Inside getALlBlogs Try");
     const blogsData = await SelectiveSystemsBlog.find().lean();
     console.log("BlogsData in getAllBlogs", blogsData);
