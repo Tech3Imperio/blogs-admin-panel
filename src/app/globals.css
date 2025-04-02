@@ -117,7 +117,7 @@ body {
   font-style: normal;
 }
 
-.body-quill p {
+.quill-editor p * {
   font-family: "Roboto", serif;
   font-optical-sizing: auto;
   font-weight: 400;
