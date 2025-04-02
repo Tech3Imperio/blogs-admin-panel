@@ -111,7 +111,14 @@ export function NewBlogDialog({ onValidSlug }: { onValidSlug: () => void }) {
           <DialogDescription>Please Specify Blog Slug</DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form className="space-y-1">
+          <form
+            className="space-y-1"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+              }
+            }}
+          >
             <FormField
               control={form.control}
               name="blogSlug"
