@@ -7,5 +7,5 @@ export async function register() {
     await dbConnect();
     console.log("After DB Connect");
   }
-  console.log("Instrumentation End");
+  console.log("Instrumentation Ends Here");
 }
