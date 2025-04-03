@@ -49,7 +49,7 @@ const NavBreadCrumb = () => {
             {index !== 0 && <BreadcrumbSeparator />}
             <BreadcrumbItem>
               <BreadcrumbLink
-                href={`https://blogs-admin-panel-ten.vercel.app/${links[index]}`}
+                href={`https://blogs-admin-panel.onrender.com/${links[index]}`}
               >
                 {breadCrumb}
               </BreadcrumbLink>
