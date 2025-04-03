@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import SectionNavItem from "./SectionNavItem";
-import { Code, Plus, CuboidIcon } from "lucide-react";
+import SectionNavItem from "./SectionNavComponents/SectionNavItem";
+import { Code, Plus } from "lucide-react";
 import { newBlog } from "@/state/proxies/newBlog";
 import { SectionType } from "@/models/blogs/sections/BlogSection";
 import { useSnapshot } from "@/lib/valtio";
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
+import SectionNavDND from "./SectionNavComponents/SectionNavDND";
 const SectionsNavBar = () => {
   const snap = useSnapshot(newBlog);
   const [newSectionName, setNewSectionName] = useState<string>("New Section");
@@ -56,31 +57,56 @@ const SectionsNavBar = () => {
       }
     }, 0);
   };
-
+  const addSectionInBetween = (index: number, inBetweenSectionName: string) => {
+    const newInBetweenSection: SectionType = {
+      name: inBetweenSectionName,
+      sectionId: uuid(),
+      subSections: [
+        {
+          name: "Heading",
+          heading: new Delta().insert("Heading"),
+          // headingId: "",
+        },
+        {
+          name: "Body",
+          body: new Delta().insert("Body"),
+          hasImages: false,
+          bodyImages: null,
+        },
+      ],
+    };
+    newBlog.sections.splice(index, 0, newInBetweenSection);
+    activeSection.index = index;
+    activeSection.name = inBetweenSectionName;
+    setTimeout(() => {
+      const sectionId = newBlog.sections[index].sectionId;
+      if (sectionId) {
+        const targetElement = document.getElementById(sectionId);
+        if (targetElement) targetElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
+  };
   return (
     <div className="flex flex-col max-w-[12.5%] min-w-[12.5%] px-4 pt-4 border-r-[0.5px] h-[100%]">
       <div className="flex items-center text-[14px] h-[32px] text-[#3f3f46B5] pl-2">
         Sections
       </div>
-      <div className="flex flex-col gap-1">
-        <SectionNavItem label="Metadata" sectionIndex={-1} sectionId="metadata">
+      <div className="flex flex-col">
+        <SectionNavItem
+          label="Metadata"
+          sectionIndex={-1}
+          sectionId="metadata"
+          addInBetween={addSectionInBetween}
+        >
           <Code size={14} />
         </SectionNavItem>
-        {snap.sections.map((section, index) => {
-          return (
-            <SectionNavItem
-              label={section.name}
-              key={index}
-              sectionIndex={index}
-              sectionId={section.sectionId}
-            >
-              <CuboidIcon size={14} />
-            </SectionNavItem>
-          );
-        })}
+        <SectionNavDND
+          sections={newBlog.sections}
+          addSectionInBetween={addSectionInBetween}
+        />
         <Dialog>
           <DialogTrigger asChild>
-            <div className="px-2 py-2 gap-2 h-min flex flex-row justify-start items-center w-[100%] rounded-md cursor-pointer transition-colors text-xs text-[#3F3F46] text-[14px] hover:bg-[#f4f4f4]">
+            <div className="px-2 py-2 gap-2 mt-1 h-min flex flex-row justify-start items-center w-[100%] rounded-md cursor-pointer transition-colors text-xs text-[#3F3F46] text-[14px] hover:bg-[#f4f4f4]">
               <Plus size={14} />
               Add Section
             </div>

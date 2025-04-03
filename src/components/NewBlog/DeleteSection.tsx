@@ -24,7 +24,7 @@ export function DeleteSection({
     <Dialog>
       <DialogTrigger asChild>
         <Trash
-          size={14}
+          size={12}
           className={
             hideTrash
               ? "hidden"
