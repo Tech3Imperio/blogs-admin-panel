@@ -20,7 +20,7 @@ const BlogMetadataSchema = new Schema({
       required: [true, "URL cannot be empty"],
       validate: {
         validator: (url: string) =>
-          /^(https?:\/\/.*\.(?:png|jpg|jpeg|webp|gif|svg))$/.test(url),
+          /^(https?:\/\/.*\.(?:png|jpg|jpeg|webp|gif|svg|avif))$/.test(url),
         message: "Invalid image URL",
       },
     },
@@ -45,8 +45,8 @@ const ImageSchema = new mongoose.Schema({
     type: String,
     required: [true, "Image URL is required"],
     validate: {
-      validator: (value: string) => /^https?:\/\/.+/i.test(value), // URL validation regex
-      message: "Invalid URL",
+      validator: (url: string) =>
+        /^(https?:\/\/.*\.(?:png|jpg|jpeg|webp|gif|svg|avif))$/.test(url),
     },
   },
   altText: {
