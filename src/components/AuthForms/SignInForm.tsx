@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { LogIn } from "lucide-react";
+import { ChevronLeft, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -14,12 +14,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { signup, signin } from "@/app/actions/auth";
+import { signin } from "@/app/actions/auth";
 
 const allowedDomains = ["@selectivesystems.in"];
 
-const AuthFormSchema = z.object({
+const SignInFormSchema = z.object({
   email: z
     .string()
     .min(1, { message: "Email is required" })
@@ -34,11 +33,13 @@ const AuthFormSchema = z.object({
     .max(20, { message: "Password must not be more that 20 characters" }),
 });
 
-export default function AuthForm() {
-  const [isSignInActive, setIsSignInActive] = useState(true);
-
-  const form = useForm<z.infer<typeof AuthFormSchema>>({
-    resolver: zodResolver(AuthFormSchema),
+export default function SignInForm({
+  changePosition,
+}: {
+  changePosition: () => void;
+}) {
+  const form = useForm<z.infer<typeof SignInFormSchema>>({
+    resolver: zodResolver(SignInFormSchema),
     mode: "onBlur",
     defaultValues: {
       email: "",
@@ -46,20 +47,17 @@ export default function AuthForm() {
     },
   });
 
-  async function onSignUp(values: z.infer<typeof AuthFormSchema>) {
-    await signup(values);
-  }
-
-  async function onSignIn(values: z.infer<typeof AuthFormSchema>) {
+  async function onSignIn(values: z.infer<typeof SignInFormSchema>) {
     await signin(values);
   }
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(isSignInActive ? onSignIn : onSignUp)}
+        onSubmit={form.handleSubmit(onSignIn)}
         className="space-y-3 items-center flex flex-col"
       >
+        <h1 className="mb-4 text-3xl">Sign In</h1>
         <FormField
           control={form.control}
           name="email"
@@ -99,41 +97,25 @@ export default function AuthForm() {
           )}
         />
         <div className="flex flex-row h-min w-min gap-4 justify-center">
-          {isSignInActive ? (
-            <>
-              <Button>
-                Sign In
-                <LogIn />
-              </Button>
-              <Button
-                variant="ghost"
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsSignInActive(false);
-                }}
-              >
-                Sign Up
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button
-                variant="ghost"
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsSignInActive(true);
-                }}
-              >
-                Sign In
-              </Button>
-              <Button>
-                Sign Up
-                <LogIn />
-              </Button>
-            </>
-          )}
+          <>
+            <Button
+              variant="ghost"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+
+                changePosition();
+                form.reset();
+              }}
+            >
+              <ChevronLeft />
+              Sign Up
+            </Button>
+            <Button>
+              Sign In
+              <LogIn />
+            </Button>
+          </>
         </div>
       </form>
     </Form>
