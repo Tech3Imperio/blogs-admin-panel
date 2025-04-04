@@ -24,7 +24,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { signup } from "@/app/actions/auth";
 import { useState } from "react";
-import { toast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { sendOTP, verifyOTP } from "@/app/actions/email";
 
 const allowedDomains = ["@selectivesystems.in", "@imperiorailing.com"];
@@ -71,6 +71,7 @@ export default function SignUpForm({
 }: {
   changePosition: () => void;
 }) {
+  const { toast } = useToast();
   const [OTPValue, setOTPValue] = useState<string>("");
   const [isOTP, setIsOTP] = useState<boolean>(false);
   const [registrationDetails, setRegistrationDetails] = useState<z.infer<
@@ -97,9 +98,6 @@ export default function SignUpForm({
     if (values.password === values.confirmPassword) {
       const status = await sendOTP(values);
       if (status) {
-        setIsOTP(true);
-        setRegistrationDetails({ ...values });
-        SignUpform.reset();
         toast({
           title: `OTP Sent`,
           description: (
@@ -108,6 +106,9 @@ export default function SignUpForm({
             </pre>
           ),
         });
+        setIsOTP(true);
+        setRegistrationDetails({ ...values });
+        SignUpform.reset();
       } else {
         console.log("Some error");
       }
@@ -134,12 +135,7 @@ export default function SignUpForm({
     }
 
     toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+      title: "Incorrect OTP",
     });
   }
 
