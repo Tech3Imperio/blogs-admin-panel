@@ -25,7 +25,7 @@ const SignInFormSchema = z.object({
     .email({ message: "Invalid email address" })
     .refine(
       (email) => allowedDomains.some((domain) => email.endsWith(domain)),
-      { message: `Only emails from ${allowedDomains.join(" or ")} are allowed` }
+      { message: "Invalid Email" }
     ),
   password: z
     .string()
