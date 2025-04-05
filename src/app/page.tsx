@@ -47,17 +47,26 @@ export default function Home() {
       {/* <Card className="flex w-[33%] h-[50%] flex-col justify-center items-center gap-4 rounded-2xl shadow-2xl backdrop-blur-md "> */}
       <div className="flex w-[50%] h-[66%] flex-row relative justify-around items-center rounded-2xl shadow-2xl bg-white overflow-hidden">
         <div
-          className={`absolute !z-1 top-0 h-full bg-black transition-all duration-500 ease-in-out flex justify-center items-center ${getClasses()}`}
+          // style={{
+          //   backgroundImage: `url(${LogoBackground.src})`,
+          //   backgroundRepeat: "no-repeat",
+          //   backgroundPosition: "center",
+          //   backgroundClip: "inherit",
+          // }}
+          className={`absolute z-10 top-0 h-full transition-all bg-black duration-500 ease-in-out flex justify-center items-center ${getClasses()}`}
         >
           <Image
             src={whiteLogo}
             alt="logo"
             className="w-48 aspect-auto"
-            width={1600}
+            width={2000}
+            height={2000}
           />
         </div>
-        <SignUpForm changePosition={handleClick} />
-        <SignInForm changePosition={handleClick} />
+        <div className="relative flex w-full h-full justify-around items-center">
+          <SignUpForm changePosition={handleClick} />
+          <SignInForm changePosition={handleClick} />
+        </div>
       </div>
       {/* </Card> */}
     </div>

@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { ChevronRight, LogIn } from "lucide-react";
+import { ChevronRight, Eye, EyeOff, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -72,6 +72,9 @@ export default function SignUpForm({
   const { toast } = useToast();
   const [OTPValue, setOTPValue] = useState<string>("");
   const [isOTP, setIsOTP] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
   const [registrationDetails, setRegistrationDetails] = useState<z.infer<
     typeof SignUpFormSchema
   > | null>(null);
@@ -97,7 +100,7 @@ export default function SignUpForm({
       const status = await sendOTP(values);
       if (status) {
         toast({
-          duration: 3000,
+          duration: 2000,
           title: `OTP Sent`,
           description: (
             <pre>
@@ -128,7 +131,7 @@ export default function SignUpForm({
           password: registrationDetails!.password,
         };
         toast({
-          duration: 1000,
+          duration: 2000,
           title: "Registration Successful",
         });
         await signup(userData);
@@ -138,7 +141,7 @@ export default function SignUpForm({
     }
 
     toast({
-      duration: 3000,
+      duration: 2000,
       title: "Incorrect OTP",
     });
   }
@@ -244,12 +247,25 @@ export default function SignUpForm({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Password"
-                      className="min-w-72"
-                      {...field}
-                    />
+                    <div className="relative w-full h-max">
+                      <Input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        className="min-w-72"
+                        {...field}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
+                      >
+                        {showPassword ? (
+                          <EyeOff size={18} />
+                        ) : (
+                          <Eye size={18} />
+                        )}
+                      </button>
+                    </div>
                   </FormControl>
                   <div className="min-h-4  px-1">
                     <FormMessage className="text-[12px]" />
@@ -263,12 +279,25 @@ export default function SignUpForm({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="Confirm Password"
-                      className="min-w-72"
-                      {...field}
-                    />
+                    <div className="relative w-full h-max">
+                      <Input
+                        type={showConfirmPassword ? "text" : "password"}
+                        placeholder="Confirm Password"
+                        className="min-w-72"
+                        {...field}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword((prev) => !prev)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
+                      >
+                        {showConfirmPassword ? (
+                          <EyeOff size={18} />
+                        ) : (
+                          <Eye size={18} />
+                        )}
+                      </button>
+                    </div>
                   </FormControl>
                   <div className="min-h-4  px-1">
                     <FormMessage className="text-[12px]" />

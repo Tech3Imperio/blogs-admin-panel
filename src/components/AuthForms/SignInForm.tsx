@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { ChevronLeft, LogIn } from "lucide-react";
+import { ChevronLeft, Eye, EyeOff, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { signin } from "@/app/actions/auth";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const allowedDomains = ["@selectivesystems.in", "@imperiorailing.com"];
 
@@ -38,6 +40,8 @@ export default function SignInForm({
 }: {
   changePosition: () => void;
 }) {
+  const [showPassword, setShowPassword] = useState(false);
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof SignInFormSchema>>({
     resolver: zodResolver(SignInFormSchema),
     mode: "onBlur",
@@ -48,7 +52,11 @@ export default function SignInForm({
   });
 
   async function onSignIn(values: z.infer<typeof SignInFormSchema>) {
-    await signin(values);
+    const status = await signin(values);
+    toast({
+      duration: 2000,
+      title: `${status.message}`,
+    });
   }
 
   return (
@@ -83,12 +91,21 @@ export default function SignInForm({
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  className="min-w-72"
-                  {...field}
-                />
+                <div className="relative w-full h-max">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    className="min-w-72"
+                    {...field}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-black"
+                  >
+                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  </button>
+                </div>
               </FormControl>
               <div className="min-h-4  px-1">
                 <FormMessage className="text-[12px]" />
