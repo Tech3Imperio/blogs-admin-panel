@@ -39,6 +39,7 @@ const SectionNavItem: React.FC<{
       newBlog.sections.splice(sectionIndex, 1);
     }, 0);
   };
+  console.log("Checking Label", label);
   return (
     <div
       className="flex relative flex-col w-[100%]"

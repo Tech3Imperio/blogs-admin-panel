@@ -228,3 +228,17 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.toast-slide-top {
+  animation: slideInFromTop 0.3s ease-out forwards !important;
+}

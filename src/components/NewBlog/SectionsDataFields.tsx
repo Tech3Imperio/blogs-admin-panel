@@ -28,6 +28,7 @@ const SectionsDataFields = () => {
   const saveSectionName = () => {
     activeSection.name = sectionName;
     newBlog.sections[activeSection.index].name = sectionName;
+    console.log("Checking New Blog", newBlog);
   };
   return (
     <div className="flex flex-col max-w-[30%] min-w-[30%] border-r-[0.5px] h-[100%]">

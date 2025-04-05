@@ -13,7 +13,6 @@ type Stage = "idle" | "expanding" | "shrinking";
 export default function Home() {
   const [currentSide, setCurrentSide] = useState<Side>("left");
   const [stage, setStage] = useState<Stage>("idle");
-
   const handleClick = () => {
     if (stage !== "idle") return; // Prevent spamming click
     setStage("expanding");

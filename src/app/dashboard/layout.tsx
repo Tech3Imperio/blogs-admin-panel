@@ -11,19 +11,6 @@ const DashboardLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  // useEffect(() => {
-  //   async function fetchBlogs() {
-  //     try {
-  //       const blogsData: BlogType[] = await getAllBlogs();
-  //       console.log(blogsData);
-  //       localStorage.setItem("blogs", JSON.stringify(blogsData));
-  //       console.log("set blogs");
-  //     } catch (error) {
-  //       console.error("Error Fetching Blogs", error);
-  //     }
-  //   }
-  //   fetchBlogs();
-  // }, []);
   return (
     <SidebarProvider>
       <AppSidebar />

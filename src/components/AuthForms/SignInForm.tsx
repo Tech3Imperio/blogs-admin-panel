@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { signin } from "@/app/actions/auth";
 
-const allowedDomains = ["@selectivesystems.in"];
+const allowedDomains = ["@selectivesystems.in", "@imperiorailing.com"];
 
 const SignInFormSchema = z.object({
   email: z

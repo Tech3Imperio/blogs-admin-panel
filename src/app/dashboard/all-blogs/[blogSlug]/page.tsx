@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BlogPreview from "@/components/NewBlog/BlogPreview";
 import SectionsDataFields from "@/components/NewBlog/SectionsDataFields";
 import SectionsNavBar from "@/components/NewBlog/SectionsNavBar";
@@ -13,9 +13,8 @@ const Blog = () => {
   const params = useParams();
   const blogSlug = params?.blogSlug;
   const blogs: BlogType[] = JSON.parse(localStorage.getItem("blogs") || "[]");
-  const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
+  const reset = () => {
     console.log("Params:", params);
     console.log("Blog Slug:", blogSlug);
 
@@ -39,18 +38,22 @@ const Blog = () => {
           }
         }
       }
-      newBlog.metadata = blog.metadata;
-      newBlog.sections = blog.sections;
-      newBlog.isDraft = blog.isDraft;
-      activeSection.name = "Metadata";
-      activeSection.index = -1;
-      setLoaded(true); // Force re-render
+      const resetNewBlog = () => {
+        newBlog.metadata = { ...blog.metadata };
+        newBlog.sections = [...blog.sections];
+        newBlog.isDraft = blog.isDraft;
+      };
+      const resetActiveSection = () => {
+        activeSection.name = "Metadata";
+        activeSection.index = -1;
+      };
+      resetActiveSection();
+      resetNewBlog();
+
       console.log("Blog state updated", newBlog);
     }
-  }, [blogs, blogSlug, params]);
-
-  if (!loaded) return <p>Loading...</p>;
-
+  };
+  reset();
   return (
     <div className="flex flex-row justify-stretch h-[100%]">
       <SectionsNavBar />

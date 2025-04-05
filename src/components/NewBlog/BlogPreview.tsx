@@ -20,6 +20,7 @@ import _ from "lodash";
 import { useUnsavedChangesWarning } from "@/hooks/useUnsavedChangesWarning";
 import { useRouter } from "next/navigation";
 import { blogSubmitted } from "@/state/proxies/blogSubmitted";
+import { useToast } from "@/hooks/use-toast";
 const BlogPreview = () => {
   const router = useRouter();
   const blogSnap = useSnapshot(newBlog);
@@ -38,6 +39,7 @@ const BlogPreview = () => {
     }
   }, [blogSnap, savedData, isDisabled]); // Depend on reactive proxy
   useUnsavedChangesWarning({ isDisabled });
+  const { toast } = useToast();
   return (
     <div className="flex flex-col min-w-[57.5%] max-w-[57.5%] px-4 py-4 gap-4 bg-gray-50">
       {hasError && <ValidationAlert closeAlert={closeAlert} />}
@@ -89,8 +91,18 @@ const BlogPreview = () => {
               if (status.success) {
                 const blogsData = status.blogs;
                 localStorage.setItem("blogs", JSON.stringify(blogsData));
+                toast({
+                  duration: 3000,
+                  title: status.message,
+                });
+                console.log("Draft Submitted", draft);
+              } else {
+                toast({
+                  variant: "destructive",
+                  duration: 3000,
+                  title: status.message,
+                });
               }
-              console.log("Draft Submitted", draft);
             }}
           >
             {newBlog.isDraft ? "Save Draft" : "Update"}
@@ -128,12 +140,21 @@ const BlogPreview = () => {
                   const blogsData = status.blogs;
                   localStorage.setItem("blogs", JSON.stringify(blogsData));
                   console.log("Blog Submitted", plainBlog);
+                  toast({
+                    duration: 3000,
+                    title: status.message,
+                  });
                   router.push(
                     `/dashboard/all-blogs/${plainBlog.metadata.blogSlug}`
                   );
                   blogSubmitted.status = false;
                 } else {
                   newBlog.isDraft = true;
+                  toast({
+                    variant: "destructive",
+                    duration: 3000,
+                    title: status.message,
+                  });
                 }
                 console.log(status.message, status.error);
               }}

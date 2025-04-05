@@ -99,6 +99,7 @@ export default function SignUpForm({
       const status = await sendOTP(values);
       if (status) {
         toast({
+          duration: 3000,
           title: `OTP Sent`,
           description: (
             <pre>
@@ -128,6 +129,10 @@ export default function SignUpForm({
           email: registrationDetails!.email,
           password: registrationDetails!.password,
         };
+        toast({
+          duration: 1000,
+          title: "Registration Successful",
+        });
         await signup(userData);
       }
     } else {
@@ -135,6 +140,7 @@ export default function SignUpForm({
     }
 
     toast({
+      duration: 3000,
       title: "Incorrect OTP",
     });
   }

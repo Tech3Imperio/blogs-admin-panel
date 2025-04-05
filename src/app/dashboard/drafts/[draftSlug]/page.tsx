@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BlogPreview from "@/components/NewBlog/BlogPreview";
 import SectionsDataFields from "@/components/NewBlog/SectionsDataFields";
 import SectionsNavBar from "@/components/NewBlog/SectionsNavBar";
@@ -13,8 +13,7 @@ const Draft = () => {
   const params = useParams();
   const draftSlug = params?.draftSlug;
   const blogs: BlogType[] = JSON.parse(localStorage.getItem("blogs") || "[]");
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
+  const reset = () => {
     if (!draftSlug || !blogs) return; // Avoid running the effect if blogSlug is undefined
 
     const draft = blogs.find((blog) => blog.metadata.blogSlug === draftSlug);
@@ -33,16 +32,20 @@ const Draft = () => {
           }
         }
       }
-      newBlog.metadata = draft.metadata;
-      newBlog.sections = draft.sections;
-      newBlog.isDraft = draft.isDraft;
-      activeSection.name = "Metadata";
-      activeSection.index = -1;
-      setLoaded(true); // Force re-render
+      const resetNewBlow = () => {
+        newBlog.metadata = { ...draft.metadata };
+        newBlog.sections = [...draft.sections];
+        newBlog.isDraft = draft.isDraft;
+      };
+      const resetActiveSection = () => {
+        activeSection.name = "Metadata";
+        activeSection.index = -1;
+      };
+      resetNewBlow();
+      resetActiveSection();
     }
-  }, [blogs, draftSlug, params]);
-
-  if (!loaded) return <p>Loading...</p>; // Prevent rendering empty state
+  };
+  reset();
 
   return (
     <div className="flex flex-row justify-stretch h-[100%]">
