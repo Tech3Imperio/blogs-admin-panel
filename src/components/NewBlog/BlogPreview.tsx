@@ -41,7 +41,7 @@ const BlogPreview = () => {
   useUnsavedChangesWarning({ isDisabled });
   const { toast } = useToast();
   return (
-    <div className="flex flex-col min-w-[57.5%] max-w-[57.5%] px-4 py-4 gap-4 bg-gray-50">
+    <div className="flex flex-col w-full px-4 py-4 gap-4 bg-gray-50 h-full">
       {hasError && <ValidationAlert closeAlert={closeAlert} />}
       <div className="flex flex-row justify-between items-end w-[100%] h-max">
         <div className="flex items-center text-[14px] h-[32px] text-[#3f3f46B5]">

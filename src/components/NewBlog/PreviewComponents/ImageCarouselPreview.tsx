@@ -22,8 +22,8 @@ const ImageCarouselPreview: React.FC<ImageCarouselPreviewProps> = ({
 }) => {
   if (bodyImages) {
     return (
-      <div className="min-w-max min-h-max max-w-max max-h-max flex flex-wrap gap-2 rounded-lg">
-        <Carousel className="w-full max-w-xs rounded-lg">
+      <div className=" lg:w-[400px] md:w-[275px] sm:w-[150px] flex flex-wrap gap-2 rounded-lg">
+        <Carousel className="rounded-lg">
           <CarouselContent className="rounded-lg">
             {images.map((image, index) => (
               <CarouselItem key={index}>
@@ -33,8 +33,8 @@ const ImageCarouselPreview: React.FC<ImageCarouselPreviewProps> = ({
                       key={index}
                       src={image.src === "" ? NoImage : image.src}
                       alt={image.altText}
-                      width={360} // Adjust width // Adjust height
-                      height={360}
+                      width={720} // Adjust width // Adjust height
+                      height={720}
                       className="aspect-square"
                       style={{ objectFit: "cover" }}
                       priority
@@ -44,7 +44,7 @@ const ImageCarouselPreview: React.FC<ImageCarouselPreviewProps> = ({
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="absolute flex flex-row h-[32px] w-full gap-2 justify-center items-center bottom-2">
+          <div className="absolute flex flex-row h-[32px] w-full gap-2 justify-center items-center bottom-2 z-[1]">
             <div className="relative w-max h-max">
               <CarouselPrevious className="relative top-4 left-0" />
             </div>
@@ -95,18 +95,3 @@ const ImageCarouselPreview: React.FC<ImageCarouselPreviewProps> = ({
 };
 
 export default ImageCarouselPreview;
-
-{
-  /* {images.map((image, index) => (
-          <Image
-            key={index}
-            src={image.src}
-            alt={image.altText}
-            width={360} // Adjust width // Adjust height
-            height={360}
-            className="aspect-square"
-            style={{ objectFit: "cover" }}
-            priority
-          />
-        ))} */
-}

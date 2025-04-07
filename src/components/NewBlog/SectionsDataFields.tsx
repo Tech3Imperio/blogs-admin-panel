@@ -31,7 +31,7 @@ const SectionsDataFields = () => {
     console.log("Checking New Blog", newBlog);
   };
   return (
-    <div className="flex flex-col max-w-[30%] min-w-[30%] border-r-[0.5px] h-[100%]">
+    <div className="flex flex-col w-full border-r-[0.5px] h-[100%]">
       <div className="flex flex-row justify-between text-[#3f3f46B5] items-center pt-4 px-4 text-[14px] h-8 box-content">
         {activeSnap.name}
         {activeSnap.name === "Metadata" ? (

@@ -8,40 +8,37 @@ const BodyPreview = ({ subSection }: { subSection: BodyType }) => {
   return (
     <>
       {subSection.hasImages ? (
-        <div className="w-full h-max flex flex-row gap-4 justify-start items-center">
-          {subSection.bodyImages!.position === "LEFT" ? (
-            <>
+        <div className="body-preview-wrapper w-full h-max">
+          {subSection.bodyImages!.position === "LEFT" && (
+            <div className="mr-4 float-left">
               <ImageCarouselPreview
                 images={subSection.bodyImages!.images}
                 bodyImages={true}
               />
-              <Quill
-                value={subSection.body} // Directly pass the Delta object
-                readOnly={true} // Prevent user editing
-                theme="bubble"
-                className="no-padding-quill body-quill"
-              />
-            </>
-          ) : (
-            <>
-              <Quill
-                value={subSection.body} // Directly pass the Delta object
-                readOnly={true} // Prevent user editing
-                theme="bubble"
-                className="no-padding-quill"
-              />
-              <ImageCarouselPreview
-                images={subSection.bodyImages!.images}
-                bodyImages={true}
-              />
-            </>
+            </div>
           )}
+
+          {subSection.bodyImages!.position === "RIGHT" && (
+            <div className="ml-4 float-right">
+              <ImageCarouselPreview
+                images={subSection.bodyImages!.images}
+                bodyImages={true}
+              />
+            </div>
+          )}
+
+          <Quill
+            value={subSection.body}
+            readOnly={true}
+            theme="bubble"
+            className="no-padding-quill body-quill"
+          />
         </div>
       ) : (
-        <div className="w-full h-max flex flex-row justify-start items-center">
+        <div className="w-full h-max">
           <Quill
-            value={subSection.body} // Directly pass the Delta object
-            readOnly={true} // Prevent user editing
+            value={subSection.body}
+            readOnly={true}
             theme="bubble"
             className="no-padding-quill body-quill"
           />

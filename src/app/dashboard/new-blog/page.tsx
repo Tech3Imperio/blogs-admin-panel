@@ -5,6 +5,11 @@ import BlogPreview from "@/components/NewBlog/BlogPreview";
 import SectionsDataFields from "@/components/NewBlog/SectionsDataFields";
 import SectionsNavBar from "@/components/NewBlog/SectionsNavBar";
 import { NewBlogDialog } from "./NewBlogDialog";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 const NewBlog = () => {
   const [isSlugValid, setIsSlugValid] = useState(false);
@@ -18,11 +23,16 @@ const NewBlog = () => {
       {!isSlugValid ? (
         <NewBlogDialog onValidSlug={() => setIsSlugValid(true)} />
       ) : (
-        <>
+        <ResizablePanelGroup direction="horizontal" className="w-full h-full">
           <SectionsNavBar />
-          <SectionsDataFields />
-          <BlogPreview />
-        </>
+          <ResizablePanel className=" min-w-[20%]" defaultSize={30}>
+            <SectionsDataFields />
+          </ResizablePanel>
+          <ResizableHandle />
+          <ResizablePanel className="min-w-[40%] h-full" defaultSize={57.5}>
+            <BlogPreview />
+          </ResizablePanel>
+        </ResizablePanelGroup>
       )}
     </div>
   );

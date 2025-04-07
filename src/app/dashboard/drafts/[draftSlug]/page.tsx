@@ -9,6 +9,11 @@ import { newBlog } from "@/state/proxies/newBlog";
 import { BlogType } from "@/models/blogs/Blog";
 import { Delta } from "quill";
 import { activeSection } from "@/state/proxies/activeSection";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 const Draft = () => {
   const params = useParams();
   const draftSlug = params?.draftSlug;
@@ -49,9 +54,16 @@ const Draft = () => {
 
   return (
     <div className="flex flex-row justify-stretch h-[100%]">
-      <SectionsNavBar />
-      <SectionsDataFields />
-      <BlogPreview />
+      <ResizablePanelGroup direction="horizontal" className="w-full h-full">
+        <SectionsNavBar />
+        <ResizablePanel className=" min-w-[20%]" defaultSize={30}>
+          <SectionsDataFields />
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel className="min-w-[40%] h-full" defaultSize={57.5}>
+          <BlogPreview />
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </div>
   );
 };

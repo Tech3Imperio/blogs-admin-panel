@@ -117,14 +117,6 @@ body {
   font-style: normal;
 }
 
-.quill-editor p * {
-  font-family: "Roboto", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-}
-
 .no-padding-quill a {
   color: blue;
   text-decoration: none !important;
@@ -241,4 +233,28 @@ body {
 }
 .toast-slide-top {
   animation: slideInFromTop 0.3s ease-out forwards !important;
+}
+
+.body-preview-wrapper {
+  display: block;
+  overflow: visible;
+}
+
+.body-quill .ql-editor {
+  display: block;
+  overflow: visible;
+  font-family: "Roboto", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  font-size: 14px;
+}
+
+/* Optional: Clearfix if things break below */
+.body-quill .ql-editor::after {
+  content: "";
+  display: block;
+  clear: both;
+  z-index: 0;
 }
