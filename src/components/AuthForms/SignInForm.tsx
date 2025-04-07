@@ -41,6 +41,7 @@ export default function SignInForm({
   changePosition: () => void;
 }) {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const form = useForm<z.infer<typeof SignInFormSchema>>({
     resolver: zodResolver(SignInFormSchema),
@@ -52,6 +53,7 @@ export default function SignInForm({
   });
 
   async function onSignIn(values: z.infer<typeof SignInFormSchema>) {
+    setLoading(true);
     const status = await signin(values);
     toast({
       duration: 2000,
@@ -130,7 +132,11 @@ export default function SignInForm({
             </Button>
             <Button>
               Sign In
-              <LogIn />
+              {loading ? (
+                <div className="h-[14px] w-[14px] border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              ) : (
+                <LogIn />
+              )}
             </Button>
           </>
         </div>

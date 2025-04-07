@@ -70,6 +70,7 @@ export default function SignUpForm({
   changePosition: () => void;
 }) {
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [OTPValue, setOTPValue] = useState<string>("");
   const [isOTP, setIsOTP] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -97,7 +98,9 @@ export default function SignUpForm({
 
   async function onSignUp(values: z.infer<typeof SignUpFormSchema>) {
     if (values.password === values.confirmPassword) {
+      setLoading(true);
       const status = await sendOTP(values);
+      setLoading(false);
       if (status) {
         toast({
           duration: 2000,
@@ -120,6 +123,7 @@ export default function SignUpForm({
   }
 
   async function onOTPSubmit() {
+    setLoading(true);
     console.log("In OTP Submit");
     const data = { pin: OTPValue };
     if (registrationDetails !== undefined) {
@@ -195,7 +199,11 @@ export default function SignUpForm({
                   }}
                 >
                   Verify
-                  <LogIn />
+                  {loading ? (
+                    <div className="h-[14px] w-[14px] border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  ) : (
+                    <LogIn />
+                  )}
                 </Button>
                 <Button
                   variant="ghost"
@@ -309,7 +317,11 @@ export default function SignUpForm({
               <>
                 <Button>
                   Sign Up
-                  <LogIn />
+                  {loading ? (
+                    <div className="h-[14px] w-[14px] border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  ) : (
+                    <LogIn />
+                  )}
                 </Button>
                 <Button
                   variant="ghost"
