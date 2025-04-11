@@ -11,6 +11,7 @@ import {
 import { PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useTheme } from "next-themes";
 
 const SectionDropdown = ({
   SectionIndex,
@@ -19,6 +20,7 @@ const SectionDropdown = ({
   SectionIndex: number;
   addInBetween: (index: number, inBetweenSectionName: string) => void;
 }) => {
+  const { theme } = useTheme();
   console.log("Section index", SectionIndex);
   const [inBetweenSectionName, setInBetweenSectionName] =
     useState<string>("New Section");
@@ -32,10 +34,12 @@ const SectionDropdown = ({
       ) : (
         <div className="w-full h-[4px] opacity-0 hover:opacity-100 flex flex-row justify-center items-center relative group">
           {/* Expanding Top Border Effect */}
-          <div className="absolute top-0 left-1/2 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full group-hover:left-0"></div>
+          <div
+            className={`absolute top-0 left-1/2 w-0 h-[1px] bg-${theme} invert transition-all duration-500 group-hover:w-full group-hover:left-0`}
+          ></div>
           <Dialog>
             <DialogTrigger className="w-max h-max absolute  left-1/2 translate-x-[-50%] transition-opacity opacity-0 delay-100 group-hover:opacity-100 bg-transparent">
-              <PlusCircle size={16} className="bg-white rounded-full" />
+              <PlusCircle size={16} className={`bg-${theme} rounded-full`} />
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>

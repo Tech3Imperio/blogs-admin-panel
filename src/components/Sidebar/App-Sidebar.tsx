@@ -71,9 +71,7 @@ export function AppSidebar() {
                   key={item.title}
                   className={
                     activeSegment === getSegment(item.url)
-                      ? theme === "light"
-                        ? "bg-[#f4f4f5] rounded-md"
-                        : "bg-[#27272a] rounded-md"
+                      ? `bg-${theme} rounded-md`
                       : ""
                   }
                 >
@@ -98,7 +96,7 @@ export function AppSidebar() {
                   key={item.title}
                   className={
                     activeSegment === getSegment(item.url)
-                      ? "bg-[#f4f4f5] rounded-md"
+                      ? `bg-${theme} rounded-md`
                       : ""
                   }
                 >

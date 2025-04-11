@@ -258,3 +258,57 @@ body {
   clear: both;
   z-index: 0;
 }
+
+.bg-light {
+  background-color: #f4f4f5;
+}
+
+.bg-dark {
+  background-color: #27272a;
+}
+
+.text-light {
+  color: #3f3f46;
+}
+.text-dark {
+  color: #f4f4f5;
+}
+
+.text-toggle-light {
+  color: white !important;
+}
+.text-toggle-dark {
+  color: black !important;
+}
+
+.bg-toggle-dark {
+  background-color: white !important;
+}
+
+.bg-toggle-light {
+  background-color: black !important;
+}
+
+.hover-bg-light:hover {
+  background-color: #f4f4f4;
+}
+
+.hover-bg-dark:hover {
+  background-color: #27272a;
+}
+
+.bg-primary-dark {
+  background-color: #09090b;
+}
+
+.bg-primary-light {
+  background-color: #fff;
+}
+
+.bg-datafield-light {
+  background-color: #f9fafb;
+}
+
+.bg-datafield-dark {
+  background-color: #18181b;
+}

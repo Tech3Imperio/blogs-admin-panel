@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { signin } from "@/app/actions/auth";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useTheme } from "next-themes";
 
 const allowedDomains = ["@selectivesystems.in", "@imperiorailing.com"];
 
@@ -40,6 +41,7 @@ export default function SignInForm({
 }: {
   changePosition: () => void;
 }) {
+  const { theme } = useTheme();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
@@ -55,6 +57,7 @@ export default function SignInForm({
   async function onSignIn(values: z.infer<typeof SignInFormSchema>) {
     setLoading(true);
     const status = await signin(values);
+    setLoading(false);
     toast({
       duration: 2000,
       title: `${status.message}`,
@@ -133,7 +136,11 @@ export default function SignInForm({
             <Button>
               Sign In
               {loading ? (
-                <div className="h-[14px] w-[14px] border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div
+                  className={`h-[14px] w-[14px] border-2 ${
+                    theme === "light" ? "border-white" : "border-black"
+                  } border-t-transparent rounded-full animate-spin`}
+                ></div>
               ) : (
                 <LogIn />
               )}

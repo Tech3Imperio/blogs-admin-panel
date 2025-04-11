@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { newBlog } from "@/state/proxies/newBlog";
+import { useTheme } from "next-themes";
 const SectionsDataFields = () => {
   const activeSnap = useSnapshot(activeSection);
   const [sectionName, setSectionName] = useState<string>(activeSnap.name);
@@ -30,9 +31,12 @@ const SectionsDataFields = () => {
     newBlog.sections[activeSection.index].name = sectionName;
     console.log("Checking New Blog", newBlog);
   };
+  const { theme } = useTheme();
   return (
     <div className="flex flex-col w-full border-r-[0.5px] h-[100%]">
-      <div className="flex flex-row justify-between text-[#3f3f46B5] items-center pt-4 px-4 text-[14px] h-8 box-content">
+      <div
+        className={`flex flex-row justify-between text-${theme} items-center pt-4 px-4 text-[14px] h-8 box-content`}
+      >
         {activeSnap.name}
         {activeSnap.name === "Metadata" ? (
           <></>

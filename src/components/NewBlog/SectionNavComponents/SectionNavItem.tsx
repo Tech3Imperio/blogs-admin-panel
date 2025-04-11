@@ -9,7 +9,7 @@ import SectionDropdown from "./SectionDropdown";
 import { useSortable } from "@dnd-kit/sortable";
 import { UniqueIdentifier } from "@dnd-kit/core";
 import { GripVertical } from "lucide-react";
-
+import { useTheme } from "next-themes";
 const SectionNavItem: React.FC<{
   label: string;
   sectionIndex: number;
@@ -17,6 +17,7 @@ const SectionNavItem: React.FC<{
   sectionId?: string;
   addInBetween: (index: number, inBetweenSectionName: string) => void;
 }> = ({ label, sectionIndex, children, sectionId, addInBetween }) => {
+  const { theme } = useTheme();
   const { attributes, listeners, setNodeRef, transform } = useSortable({
     id: sectionId as UniqueIdentifier,
   });
@@ -42,7 +43,7 @@ const SectionNavItem: React.FC<{
   console.log("Checking Label", label);
   return (
     <div
-      className="flex relative flex-col w-[100%]"
+      className={`flex relative flex-col w-[100%] bg-primary-${theme}`}
       ref={setNodeRef}
       style={{
         transform: transform
@@ -57,8 +58,8 @@ const SectionNavItem: React.FC<{
       <div
         className={`px-2 py-2 h-min flex flex-row justify-between items-center w-[100%] rounded-md cursor-pointer transition-colors text-xs ${
           snap.index === sectionIndex
-            ? "bg-[#f4f4f4] text-[#3F3F46] text-[14px]"
-            : "text-[#3F3F46] text-[14px] hover:bg-[#f4f4f4]"
+            ? `bg-${theme} text-${theme} text-[14px]`
+            : `text-${theme} text-[14px] hover-bg-${theme}`
         }`}
         onClick={() => {
           changeActiveSection();

@@ -107,8 +107,8 @@ export function NewBlogDialog({ onValidSlug }: { onValidSlug: () => void }) {
         onPointerDownOutside={(e) => e.preventDefault()}
       >
         <DialogHeader>
-          <DialogTitle className="font-medium">Blog Slug</DialogTitle>
-          <DialogDescription>Please Specify Blog Slug</DialogDescription>
+          <DialogTitle className="font-medium">URL Path</DialogTitle>
+          <DialogDescription>Please Specify URL Path</DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form
@@ -128,7 +128,7 @@ export function NewBlogDialog({ onValidSlug }: { onValidSlug: () => void }) {
                     <div className="items-center gap-4 mt-2">
                       <Input
                         id="newSection"
-                        placeholder="kebab-cased-blog-slug"
+                        placeholder="kebab-cased-path-only"
                         type="text"
                         {...field}
                         onBlur={async (e) => {

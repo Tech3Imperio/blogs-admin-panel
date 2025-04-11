@@ -35,9 +35,9 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en">
+    <html lang="en" className="w-screen h-screen">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-full`}
       >
         <ThemeProvider
           attribute="class"
@@ -45,7 +45,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="w-full h-full">{children}</main>
+          <main className="!w-full !h-full">{children}</main>
           <Toaster />
         </ThemeProvider>
       </body>

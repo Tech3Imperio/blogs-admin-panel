@@ -10,6 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Trash } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export function DeleteSection({
   deleteSection,
@@ -20,6 +21,7 @@ export function DeleteSection({
   hideTrash: boolean;
   isHovered: boolean;
 }) {
+  const { theme } = useTheme();
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -29,7 +31,9 @@ export function DeleteSection({
             hideTrash
               ? "hidden"
               : isHovered
-              ? "opacity-100 hover:bg-gray-300 hover:rounded-sm"
+              ? `opacity-100 ${
+                  theme === "light" ? "hover:bg-gray-300" : "hover:bg-gray-500"
+                } hover:rounded-sm`
               : "opacity-0"
           }
           onClick={(e: React.MouseEvent<SVGSVGElement>) => {

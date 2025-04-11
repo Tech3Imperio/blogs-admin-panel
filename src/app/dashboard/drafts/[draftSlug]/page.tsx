@@ -60,7 +60,7 @@ const Draft = () => {
           <SectionsDataFields />
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel className="min-w-[40%] h-full" defaultSize={57.5}>
+        <ResizablePanel className="min-w-[40%] max-h-full" defaultSize={57.5}>
           <BlogPreview />
         </ResizablePanel>
       </ResizablePanelGroup>

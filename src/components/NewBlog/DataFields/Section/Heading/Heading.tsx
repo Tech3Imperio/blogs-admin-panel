@@ -20,6 +20,7 @@ import QuillEditor from "../../QuillEditior";
 // import { Input } from "@/components/ui/input";
 import { newBlog } from "@/state/proxies/newBlog";
 import { DeleteSubSection } from "../../DeleteSubSection";
+import { useTheme } from "next-themes";
 const Heading = ({
   subSection,
   subSectionIndex,
@@ -29,6 +30,7 @@ const Heading = ({
   subSectionIndex: number;
   deleteSubSection: (index: number) => void;
 }) => {
+  const { theme } = useTheme();
   const form = useForm<z.infer<typeof HeadingProtocol>>({
     resolver: zodResolver(HeadingProtocol),
     mode: "onBlur",
@@ -48,7 +50,9 @@ const Heading = ({
   };
   return (
     <div className="flex relative flex-col w-[100%] mb-4">
-      <div className="flex relative flex-col w-[100%] px-4 pt-4 bg-gray-50 shadow-md rounded-lg">
+      <div
+        className={`flex relative flex-col w-[100%] px-4 pt-4 bg-datafield-${theme} shadow-md rounded-lg`}
+      >
         {subSectionIndex !== 0 && subSectionIndex !== 1 ? (
           <DeleteSubSection
             subSectionIndex={subSectionIndex}

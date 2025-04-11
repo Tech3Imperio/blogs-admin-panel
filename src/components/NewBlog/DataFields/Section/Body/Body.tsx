@@ -27,6 +27,7 @@ import { Plus, Trash } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import SubSectionDropdown from "../SubSectionDropdown";
 import { DeleteSubSection } from "../../DeleteSubSection";
+import { useTheme } from "next-themes";
 // Then use it in your component that renders the editor
 const Body = ({
   subSection,
@@ -43,6 +44,7 @@ const Body = ({
     imageCarousel: (index: number) => void;
   };
 }) => {
+  const { theme } = useTheme();
   console.log("top subsection", subSection);
   const form = useForm<z.infer<typeof BodyProtocol>>({
     resolver: zodResolver(BodyProtocol),
@@ -99,7 +101,9 @@ const Body = ({
         subSectionIndex={subSectionIndex}
         addInBetween={addInBetween}
       />
-      <div className="flex relative flex-col w-[100%] px-4 pt-4 bg-gray-50 rounded-lg shadow-md">
+      <div
+        className={`flex relative flex-col w-[100%] px-4 pt-4 bg-datafield-${theme} rounded-lg shadow-md`}
+      >
         {subSectionIndex !== 0 && subSectionIndex !== 1 ? (
           <DeleteSubSection
             subSectionIndex={subSectionIndex}
@@ -160,7 +164,7 @@ const Body = ({
               {subSection.hasImages && (
                 <div
                   onClick={addImage}
-                  className="px-2 py-2 gap-2 h-min flex flex-row justify-start items-center w-max rounded-md cursor-pointer transition-colors text-xs text-[#3F3F46] text-[14px] hover:bg-[#f4f4f4]"
+                  className={`px-2 py-2 gap-2 h-min flex flex-row justify-start items-center w-max rounded-md cursor-pointer transition-colors text-xs text-${theme} text-[14px] hover-bg-${theme}`}
                 >
                   <Plus size={14} />
                   Add Image
@@ -204,7 +208,7 @@ const Body = ({
                               }}
                               className={
                                 field.value === "LEFT"
-                                  ? "!bg-black !text-white px-4 rounded-full"
+                                  ? `bg-toggle-${theme} text-toggle-${theme} px-4 rounded-full`
                                   : "px-4 rounded-full"
                               }
                             >
@@ -218,8 +222,8 @@ const Body = ({
                               value="RIGHT"
                               className={
                                 field.value === "RIGHT"
-                                  ? "!bg-black !text-white px-4 rounded-full"
-                                  : "px-3 rounded-full"
+                                  ? `bg-toggle-${theme} text-toggle-${theme} px-4 rounded-full`
+                                  : "px-4 rounded-full"
                               }
                             >
                               Right
@@ -305,7 +309,7 @@ const Body = ({
                                 className={
                                   index === 0
                                     ? "hidden"
-                                    : "mt-1 h-min flex flex-row justify-start items-center w-max rounded-md cursor-pointer transition-colors text-xs text-[#3F3F46] text-[14px] hover:bg-[#f4f4f4]"
+                                    : `mt-1 h-min flex flex-row justify-start items-center w-max rounded-md cursor-pointer transition-colors text-xs text-${theme} text-[14px] hover-bg-${theme}`
                                 }
                               >
                                 <Trash size={14} />

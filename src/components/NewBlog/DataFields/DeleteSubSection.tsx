@@ -10,6 +10,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Trash } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export function DeleteSubSection({
   deleteSubSection,
@@ -20,12 +21,15 @@ export function DeleteSubSection({
   subSectionIndex: number;
   position: string;
 }) {
+  const { theme } = useTheme();
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Trash
           size={14}
-          className={`hover:bg-gray-200 rounded-full cursor-pointer ${position}`}
+          className={`${
+            theme === "light" ? "hover:bg-gray-300" : "hover:bg-gray-500"
+          } rounded-full cursor-pointer ${position}`}
         />
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">

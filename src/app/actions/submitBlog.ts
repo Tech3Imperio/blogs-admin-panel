@@ -3,6 +3,7 @@
 import { getAllBlogs } from "@/lib/getBlogsData";
 import { BlogType } from "@/models/blogs/Blog";
 import SelectiveSystemsBlog from "@/models/blogs/Blog";
+import generateSitemap from "./generateSitemap";
 export const submitBlog = async (blog: BlogType) => {
   try {
     const existingBlog = await SelectiveSystemsBlog.findOne({
@@ -24,6 +25,15 @@ export const submitBlog = async (blog: BlogType) => {
     } else {
       const newBlog = new SelectiveSystemsBlog(blog);
       const savedBlog = await newBlog.save();
+      try {
+        await generateSitemap();
+      } catch (error) {
+        return {
+          success: false,
+          message: "Error Redeploying",
+          error: error,
+        };
+      }
       console.log("Blog Successfully submitted", savedBlog);
       const blogsData: BlogType[] = await getAllBlogs();
       return {

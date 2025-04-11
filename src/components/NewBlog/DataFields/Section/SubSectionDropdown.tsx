@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/popover";
 import { Plus, PlusCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 
 const SubSectionDropdown = ({
   subSectionIndex,
@@ -19,6 +20,7 @@ const SubSectionDropdown = ({
   };
 }) => {
   console.log("sub section index", subSectionIndex);
+  const { theme } = useTheme();
   return (
     <>
       {subSectionIndex < 2 ? (
@@ -26,11 +28,16 @@ const SubSectionDropdown = ({
       ) : (
         <div className="w-full h-[16px] opacity-0 hover:opacity-100 flex flex-row justify-center items-center relative group">
           {/* Expanding Top Border Effect */}
-          <div className="absolute top-0 left-1/2 w-0 h-[1px] bg-black transition-all duration-500 group-hover:w-full group-hover:left-0"></div>
+          <div
+            className={`absolute top-0 left-1/2 w-0 h-[1px] bg-toggle-${theme}  transition-all duration-500 group-hover:w-full group-hover:left-0`}
+          ></div>
 
           <Popover>
             <PopoverTrigger className="w-max h-max absolute bottom-1/2 left-1/2 translate-x-[-50%] transition-opacity opacity-0 delay-100 group-hover:opacity-100">
-              <PlusCircle size={16} className="bg-white" />
+              <PlusCircle
+                size={16}
+                className={` bg-primary-${theme} text-${theme} rounded-full`}
+              />
             </PopoverTrigger>
             <PopoverContent className="bg-none p-0 w-full flex flex-row !justify-center rounded-full">
               <div className="flex flex-row w-max h-max gap-0 shadow-md rounded-full overflow-hidden">
@@ -57,7 +64,7 @@ const SubSectionDropdown = ({
                   size="sm"
                   className="relative rounded-none px-3 py-3 gap-1 h-min flex flex-row justify-start items-center w-max cursor-pointer transition-colors text-xs after:content-[''] after:absolute after:right-0 after:top-1/2 after:translate-y-[-50%] after:w-[1px] after:h-1/3 after:bg-[#bbbbbb]"
                 >
-                  <Plus className="!w-[14px] !h-[14px]" stroke="white" />
+                  <Plus className="!w-[14px] !h-[14px]" />
                   Images
                 </Button>
                 <Button

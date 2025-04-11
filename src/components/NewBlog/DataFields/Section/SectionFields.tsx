@@ -13,11 +13,25 @@ import {
 } from "@/models/blogs/sections/BlogSection";
 import { Delta } from "quill";
 import SubHeading from "./SubHeading/SubHeading";
+import { useTheme } from "next-themes";
 const SectionFields = ({
   activeSectionIndex,
 }: {
   activeSectionIndex: number;
 }) => {
+  const [difference, setDifference] = useState<number>(
+    window.innerHeight - 133
+  );
+  useEffect(() => {
+    const handleResize = () => {
+      setDifference(window.innerHeight - 133);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  const { theme } = useTheme();
   const sectionToDisplay = newBlog.sections[activeSectionIndex];
   console.log("Solving last error", sectionToDisplay);
   const [subSectionsCount, setSubSectionsCount] = useState<number>(
@@ -99,7 +113,12 @@ const SectionFields = ({
   };
   return (
     <div className="flex flex-col justify-start items-center gap-6 flex-grow w-[100%] h-full mt-4">
-      <div className="flex flex-col justify-start items-center flex-grow w-max-full w-full h-[770px] overflow-auto px-4  scrollbar-none pb-20 rounded-lg">
+      <div
+        style={{
+          maxHeight: difference,
+        }}
+        className="flex flex-col justify-start items-center flex-grow w-max-full w-full overflow-auto px-4  scrollbar-none pb-16 rounded-lg"
+      >
         {sectionToDisplay.subSections.map((subSection, index) => {
           if (subSection.name === "Heading") {
             return (
@@ -143,7 +162,9 @@ const SectionFields = ({
           }
         })}
       </div>
-      <div className="flex flex-row w-max h-max gap-0 shadow-md rounded-full overflow-hidden bg-gray-50 absolute bottom-4">
+      <div
+        className={`flex flex-row w-max h-max gap-0 shadow-md rounded-full bg-toggle-${theme} overflow-hidden absolute bottom-4`}
+      >
         <Button
           onClick={addSubHeading}
           size="sm"
@@ -167,7 +188,7 @@ const SectionFields = ({
           size="sm"
           className="relative rounded-none px-3 py-3 gap-1 h-min flex flex-row justify-start items-center w-max cursor-pointer transition-colors text-xs after:content-[''] after:absolute after:right-0 after:top-1/2 after:translate-y-[-50%] after:w-[1px] after:h-1/3 after:bg-[#bbbbbb]"
         >
-          <Plus className="!w-[14px] !h-[14px]" stroke="white" />
+          <Plus className="!w-[14px] !h-[14px]" />
           Images
         </Button>
         <Button

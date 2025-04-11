@@ -1,6 +1,7 @@
 "use server";
 
 import SelectiveSystemsBlog from "@/models/blogs/Blog";
+import generateSitemap from "./generateSitemap";
 
 export const deleteBlog = async (blogSlug: string) => {
   try {
@@ -8,6 +9,15 @@ export const deleteBlog = async (blogSlug: string) => {
     const deletedBlog = await SelectiveSystemsBlog.findOneAndDelete({
       "metadata.blogSlug": blogSlug,
     });
+    try {
+      await generateSitemap();
+    } catch (error) {
+      return {
+        success: false,
+        message: "Error Redeploying",
+        error: error,
+      };
+    }
     return {
       success: true,
       message: "Deleted successfully!",

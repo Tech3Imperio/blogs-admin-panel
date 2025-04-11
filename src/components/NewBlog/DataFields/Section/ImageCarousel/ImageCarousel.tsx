@@ -21,6 +21,7 @@ import { set } from "lodash";
 import { Plus, Trash } from "lucide-react";
 import SubSectionDropdown from "../SubSectionDropdown";
 import { DeleteSubSection } from "../../DeleteSubSection";
+import { useTheme } from "next-themes";
 const ImageCarousel = ({
   subSection,
   subSectionIndex,
@@ -72,13 +73,16 @@ const ImageCarousel = ({
     subSection.images.splice(index, 1);
     form.reset(subSection);
   };
+  const { theme } = useTheme();
   return (
     <div className="flex relative flex-col w-[100%] mb-4">
       <SubSectionDropdown
         subSectionIndex={subSectionIndex}
         addInBetween={addInBetween}
       />
-      <div className="flex flex-col w-[100%] px-4 pt-4 bg-gray-50 shadow-md rounded-lg">
+      <div
+        className={`flex flex-col w-[100%] px-4 pt-4 bg-datafield-${theme} shadow-md rounded-lg`}
+      >
         <Form {...form}>
           <form className="space-y-1">
             <div className="flex relative flex-row gap-4 items-center justify-between mb-3">
@@ -86,7 +90,7 @@ const ImageCarousel = ({
               <div className="flex flex-row gap-4 items-center">
                 <div
                   onClick={addImage}
-                  className="px-2 py-2 gap-0 h-min flex flex-row justify-start items-center w-max rounded-md cursor-pointer transition-colors text-xs text-[#3F3F46] text-[14px] hover:bg-[#f4f4f4]"
+                  className={`px-2 py-2 gap-0 h-min flex flex-row justify-start items-center w-max rounded-md cursor-pointer transition-colors text-xs text-${theme} text-[14px] hover-bg-${theme}`}
                 >
                   <Plus size={14} />
                   Add Image
@@ -172,7 +176,7 @@ const ImageCarousel = ({
                             className={
                               index === 0
                                 ? "hidden"
-                                : "mt-1 h-min flex flex-row justify-start items-center w-max rounded-md cursor-pointer transition-colors text-xs text-[#3F3F46] text-[14px] hover:bg-[#f4f4f4]"
+                                : `mt-1 h-min flex flex-row justify-start items-center w-max rounded-md cursor-pointer transition-colors text-xs text-${theme} text-[14px] hover-bg-${theme}`
                             }
                           >
                             <Trash size={14} />

@@ -18,7 +18,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import set from "lodash/set";
+import { useTheme } from "next-themes";
 const MetadataFields = () => {
+  const { theme } = useTheme();
   const blogSnap = useSnapshot(newBlog);
   const form = useForm<z.infer<typeof BlogMetadataProtocol>>({
     resolver: zodResolver(BlogMetadataProtocol),
@@ -35,7 +37,9 @@ const MetadataFields = () => {
     console.log(newBlog.metadata);
   };
   return (
-    <div className="flex flex-col w-auto mx-4 px-4 pt-4 bg-gray-50 shadow-md rounded-lg mt-4">
+    <div
+      className={`flex flex-col w-auto mx-4 px-4 pt-4 bg-datafield-${theme} shadow-md rounded-lg mt-4`}
+    >
       <Form {...form}>
         <form className="space-y-1">
           <FormField
@@ -158,7 +162,7 @@ const MetadataFields = () => {
                     type="text"
                     readOnly
                     {...field}
-                    className="placeholder:text-[12px] !mt-1 max-w-[50%] bg-gray-200 cursor-not-allowed"
+                    className={`placeholder:text-[12px] !mt-1 max-w-[50%] bg-${theme} cursor-not-allowed`}
                   />
                 </FormControl>
                 <div className="min-h-4 px-1 !mt-1">

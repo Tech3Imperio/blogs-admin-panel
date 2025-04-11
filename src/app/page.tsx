@@ -1,11 +1,12 @@
 "use client";
 import { authPageImage2 } from "@/assets/LoginPage";
 import Image from "next/image";
-import { whiteLogo } from "@/assets/Logo";
+import { blackLogo, whiteLogo } from "@/assets/Logo";
 // import dbConnect from "@/lib/dbConnect";
 import { useState } from "react";
 import SignUpForm from "@/components/AuthForms/SignUpForm";
 import SignInForm from "@/components/AuthForms/SignInForm";
+import { useTheme } from "next-themes";
 // import { Card } from "@/components/ui/card";
 // await dbConnect();
 type Side = "left" | "right";
@@ -36,6 +37,7 @@ export default function Home() {
       return `w-1/2 ${currentSide === "left" ? "left-0" : "right-0"}`;
     }
   };
+  const { theme } = useTheme();
   return (
     <div
       className="flex flex-row justify-center w-[100vw] h-[100vh] mx-auto my-auto items-center gap-8 font-[family-name:var(--font-geist-sans)]"
@@ -45,7 +47,9 @@ export default function Home() {
       }}
     >
       {/* <Card className="flex w-[33%] h-[50%] flex-col justify-center items-center gap-4 rounded-2xl shadow-2xl backdrop-blur-md "> */}
-      <div className="flex w-[50%] h-[66%] flex-row relative justify-around items-center rounded-2xl shadow-2xl bg-white overflow-hidden">
+      <div
+        className={`flex w-[50%] h-[66%] flex-row relative justify-around items-center rounded-2xl shadow-2xl bg-primary-${theme} overflow-hidden`}
+      >
         <div
           // style={{
           //   backgroundImage: `url(${LogoBackground.src})`,
@@ -53,10 +57,10 @@ export default function Home() {
           //   backgroundPosition: "center",
           //   backgroundClip: "inherit",
           // }}
-          className={`absolute z-10 top-0 h-full transition-all bg-black duration-500 ease-in-out flex justify-center items-center ${getClasses()}`}
+          className={`absolute z-10 top-0 h-full transition-all bg-toggle-${theme} duration-500 ease-in-out flex justify-center items-center ${getClasses()}`}
         >
           <Image
-            src={whiteLogo}
+            src={theme === "light" ? whiteLogo : blackLogo}
             alt="logo"
             className="w-48 aspect-auto"
             width={2000}

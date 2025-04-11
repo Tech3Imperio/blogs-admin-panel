@@ -20,6 +20,7 @@ import QuillEditor from "../../QuillEditior";
 import { newBlog } from "@/state/proxies/newBlog";
 import SubSectionDropdown from "../SubSectionDropdown";
 import { DeleteSubSection } from "../../DeleteSubSection";
+import { useTheme } from "next-themes";
 const SubHeading = ({
   subSection,
   subSectionIndex,
@@ -55,13 +56,16 @@ const SubHeading = ({
     console.log("Value for SubHeading", value);
     console.log("New Blog", newBlog);
   };
+  const { theme } = useTheme();
   return (
     <div className="flex relative flex-col w-[100%] mb-4">
       <SubSectionDropdown
         subSectionIndex={subSectionIndex}
         addInBetween={addInBetween}
       />
-      <div className="flex relative flex-col w-[100%] px-4 pt-4 bg-gray-50 shadow-md rounded-lg">
+      <div
+        className={`flex relative flex-col w-[100%] px-4 pt-4 bg-datafield-${theme} shadow-md rounded-lg`}
+      >
         {subSectionIndex !== 0 && subSectionIndex !== 1 ? (
           <DeleteSubSection
             subSectionIndex={subSectionIndex}

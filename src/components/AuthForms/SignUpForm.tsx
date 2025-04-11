@@ -26,6 +26,7 @@ import { signup } from "@/app/actions/auth";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { sendOTP, verifyOTP } from "@/app/actions/email";
+import { useTheme } from "next-themes";
 
 const allowedDomains = ["@selectivesystems.in", "@imperiorailing.com"];
 
@@ -69,6 +70,7 @@ export default function SignUpForm({
 }: {
   changePosition: () => void;
 }) {
+  const { theme } = useTheme();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [OTPValue, setOTPValue] = useState<string>("");
@@ -200,7 +202,11 @@ export default function SignUpForm({
                 >
                   Verify
                   {loading ? (
-                    <div className="h-[14px] w-[14px] border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <div
+                      className={`h-[14px] w-[14px] border-2 ${
+                        theme === "light" ? "border-white" : "border-black"
+                      } border-t-transparent rounded-full animate-spin`}
+                    ></div>
                   ) : (
                     <LogIn />
                   )}

@@ -19,7 +19,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import SectionNavDND from "./SectionNavComponents/SectionNavDND";
+import { useTheme } from "next-themes";
 const SectionsNavBar = () => {
+  const { theme } = useTheme();
   const snap = useSnapshot(newBlog);
   const [newSectionName, setNewSectionName] = useState<string>("New Section");
   useEffect(() => {
@@ -87,8 +89,10 @@ const SectionsNavBar = () => {
     }, 0);
   };
   return (
-    <div className="flex flex-col max-w-[12.5%] min-w-[12.5%] px-4 pt-4 border-r-[0.5px] h-[100%]">
-      <div className="flex items-center text-[14px] h-[32px] text-[#3f3f46B5] pl-2">
+    <div className="flex flex-col max-w-[12.5%] min-w-[12.5%] px-4 pt-4 border-r-[0.5px] max-h-[100%]">
+      <div
+        className={`flex items-center text-[14px] h-[32px] text-${theme} pl-2`}
+      >
         Sections
       </div>
       <div className="flex flex-col">
@@ -106,7 +110,9 @@ const SectionsNavBar = () => {
         />
         <Dialog>
           <DialogTrigger asChild>
-            <div className="px-2 py-2 gap-2 mt-1 h-min flex flex-row justify-start items-center w-[100%] rounded-md cursor-pointer transition-colors text-xs text-[#3F3F46] text-[14px] hover:bg-[#f4f4f4]">
+            <div
+              className={`px-2 py-2 gap-2 mt-1 h-min flex flex-row justify-start items-center w-[100%] bg-primary-${theme} rounded-md cursor-pointer transition-colors text-xs text-${theme} text-[14px] hover-bg-${theme}`}
+            >
               <Plus size={14} />
               Add Section
             </div>
