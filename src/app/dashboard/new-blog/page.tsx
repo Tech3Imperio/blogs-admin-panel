@@ -19,7 +19,7 @@ const NewBlog = () => {
     setIsSlugValid(false);
   }, []);
   return (
-    <div className="flex flex-row justify-stretch h-[100%]">
+    <div className="flex flex-row w-full h-[100%]">
       {!isSlugValid ? (
         <NewBlogDialog onValidSlug={() => setIsSlugValid(true)} />
       ) : (

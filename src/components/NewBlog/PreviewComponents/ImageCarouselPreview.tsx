@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ImageType } from "@/models/blogs/sections/BlogSection";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,9 +20,28 @@ const ImageCarouselPreview: React.FC<ImageCarouselPreviewProps> = ({
   images,
   bodyImages,
 }) => {
+  const [width, setWidth] = useState<number>(400);
+  console.log("Initial Width", width);
+  useEffect(() => {
+    const updateWidth = () => {
+      const higherDiv = document.getElementById("parent");
+      if (higherDiv) {
+        const newWidth = higherDiv.offsetWidth * 0.2;
+        console.log("width ", newWidth);
+        setWidth(() => newWidth);
+      }
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
   if (bodyImages) {
     return (
-      <div className=" lg:w-[400px] md:w-[275px] sm:w-[150px] flex flex-wrap gap-2 rounded-lg">
+      <div
+        className=" flex flex-wrap gap-2 rounded-lg"
+        style={{ width: width }}
+      >
         <Carousel className="rounded-lg">
           <CarouselContent className="rounded-lg">
             {images.map((image, index) => (

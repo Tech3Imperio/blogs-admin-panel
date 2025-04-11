@@ -197,7 +197,7 @@ const BlogPreview = () => {
             <div
               key={index}
               id={`${section.sectionId}`}
-              className="flex flex-col gap-4 px-32 py-0 mt-4 justify-start items-start w-[100%]"
+              className="flex flex-col gap-4 px-32 py-0 mt-4 justify-start items-start w-full"
             >
               {section.subSections.map((subSection, index) => {
                 if (subSection.name === "Heading") {

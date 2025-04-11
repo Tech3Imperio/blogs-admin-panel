@@ -73,9 +73,9 @@ const SectionNavItem: React.FC<{
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="flex flex-row items-center w-max h-max gap-2">
+        <div className="flex flex-row justify-start items-center w-full h-max gap-2">
           {children}
-          {label}
+          <div className="w-full truncate">{label}</div>
         </div>
         <div className="w-max h-max flex flex-row gap-2">
           <DeleteSection

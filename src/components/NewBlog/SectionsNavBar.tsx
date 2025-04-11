@@ -89,7 +89,7 @@ const SectionsNavBar = () => {
     }, 0);
   };
   return (
-    <div className="flex flex-col max-w-[12.5%] min-w-[12.5%] px-4 pt-4 border-r-[0.5px] max-h-[100%]">
+    <div className="flex flex-col max-w-[12.5%] min-w-[12.5%] overflow-hidden px-4 pt-4 border-r-[0.5px] max-h-[100%]">
       <div
         className={`flex items-center text-[14px] h-[32px] text-${theme} pl-2`}
       >
@@ -102,7 +102,9 @@ const SectionsNavBar = () => {
           sectionId="metadata"
           addInBetween={addSectionInBetween}
         >
-          <Code size={14} />
+          <div className="w-max">
+            <Code size={14} />
+          </div>
         </SectionNavItem>
         <SectionNavDND
           sections={newBlog.sections}
@@ -113,8 +115,11 @@ const SectionsNavBar = () => {
             <div
               className={`px-2 py-2 gap-2 mt-1 h-min flex flex-row justify-start items-center w-[100%] bg-primary-${theme} rounded-md cursor-pointer transition-colors text-xs text-${theme} text-[14px] hover-bg-${theme}`}
             >
-              <Plus size={14} />
-              Add Section
+              <div className="w-max">
+                <Plus size={14} />
+              </div>
+
+              <div className="w-full truncate">Add Section</div>
             </div>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">

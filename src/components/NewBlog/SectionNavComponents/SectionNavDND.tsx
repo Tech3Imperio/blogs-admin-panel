@@ -119,7 +119,9 @@ const SectionNavDND = ({
               sectionId={section.sectionId}
               addInBetween={addSectionInBetween}
             >
-              <CuboidIcon size={14} />
+              <div className="w-max">
+                <CuboidIcon size={14} />
+              </div>
             </SectionNavItem>
           ))}
         </SortableContext>

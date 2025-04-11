@@ -12,9 +12,9 @@ const DashboardLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <SidebarProvider>
+    <SidebarProvider className="w-full h-full">
       <AppSidebar />
-      <main className="flex flex-col flex-grow">
+      <main id="parent" className="flex flex-col flex-grow w-full h-full">
         <div className="flex flex-row justify-center py-4 ">
           <Navbar />
         </div>

@@ -10,7 +10,7 @@ const BodyPreview = ({ subSection }: { subSection: BodyType }) => {
       {subSection.hasImages ? (
         <div className="body-preview-wrapper w-full h-max">
           {subSection.bodyImages!.position === "LEFT" && (
-            <div className="mr-4 mb-4 float-left">
+            <div className="mr-4 mb-2 float-left">
               <ImageCarouselPreview
                 images={subSection.bodyImages!.images}
                 bodyImages={true}
@@ -19,7 +19,7 @@ const BodyPreview = ({ subSection }: { subSection: BodyType }) => {
           )}
 
           {subSection.bodyImages!.position === "RIGHT" && (
-            <div className="ml-4 mb-4 float-right">
+            <div className="ml-4 mb-2 float-right">
               <ImageCarouselPreview
                 images={subSection.bodyImages!.images}
                 bodyImages={true}
